@@ -182,8 +182,8 @@ NPCs
 Tasks (Static Data)
 --------------------
 
-View available task definitions and rewards (not your active quest —
-see :doc:`quests` for that).
+View available task definitions and rewards (not your active task —
+see :doc:`tasks` for that).
 
 .. code-block:: python
 

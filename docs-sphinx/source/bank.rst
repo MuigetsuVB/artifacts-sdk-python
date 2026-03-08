@@ -79,4 +79,4 @@ Check Bank Contents
 Next Step
 ---------
 
-Head to :doc:`marketplace` to sell and buy on the Grand Exchange.
+Head to :doc:`grand-exchange` to sell and buy on the Grand Exchange.

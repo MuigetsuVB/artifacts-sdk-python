@@ -1,4 +1,4 @@
-"""Grand Exchange domain -- marketplace operations."""
+"""Grand Exchange domain -- Grand Exchange operations."""
 
 from __future__ import annotations
 

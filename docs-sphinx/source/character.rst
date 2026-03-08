@@ -102,8 +102,8 @@ Your character has **action groups** for each aspect of the game:
    char.equipment   → Equip / unequip items
    char.bank        → Bank (gold and items)
    char.inventory   → Use / delete items
-   char.ge          → Grand Exchange (marketplace)
-   char.tasks       → Quests
+   char.ge          → Grand Exchange
+   char.tasks       → Tasks
    char.trading     → NPC and player-to-player trading
 
 Each group has its own methods. They're covered in the following

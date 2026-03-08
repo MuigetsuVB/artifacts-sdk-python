@@ -1,7 +1,7 @@
-Quests (Tasks)
+Tasks
 ===============
 
-Quests give you **rewards** in exchange for killing monsters or
+Tasks give you **rewards** in exchange for killing monsters or
 gathering items. Talk to a **Task Master** to get one.
 
 .. code-block:: python
@@ -11,7 +11,7 @@ gathering items. Talk to a **Task Master** to get one.
    for m in task_masters.data:
        print(f"Task master at ({m.x}, {m.y})")
 
-Quest Lifecycle
+Task Lifecycle
 ----------------
 
 .. code-block:: python
@@ -19,40 +19,40 @@ Quest Lifecycle
    # 1. Move to the task master
    char.move(x=1, y=2)
 
-   # 2. Accept a new quest
+   # 2. Accept a new task
    task = char.tasks.new()
-   print(f"Quest: {task.task.type.value}")
+   print(f"Task: {task.task.type.value}")
    print(f"Target: {task.task.code}")
    print(f"Required: {task.task.total}")
 
-   # 3. Complete the quest (fight or gather depending on type)
+   # 3. Complete the task (fight or gather depending on type)
    # ... (see examples below)
 
    # 4. Go back to the task master
    char.move(x=1, y=2)
 
-   # 5. Turn in the quest and claim the reward
+   # 5. Turn in the task and claim the reward
    reward = char.tasks.complete()
    print("Reward claimed!")
 
 Exchange Rewards
 -----------------
 
-After completing enough quests, you can **exchange** task tokens
+After completing enough tasks, you can **exchange** task tokens
 for special rewards:
 
 .. code-block:: python
 
    reward = char.tasks.exchange()
 
-Deliver Items for a Quest
+Deliver Items for a Task
 --------------------------
 
 .. code-block:: python
 
    char.tasks.trade(code="iron_ore", quantity=10)
 
-Cancel a Quest
+Cancel a Task
 ---------------
 
 .. code-block:: python
@@ -61,9 +61,9 @@ Cancel a Quest
 
 .. warning::
 
-   Cancelling a quest may have a cost! Think before you cancel.
+   Cancelling a task may have a cost! Think before you cancel.
 
-Full Example: Quest Loop
+Full Example: Task Loop
 --------------------------
 
 .. code-block:: python
@@ -77,11 +77,11 @@ Full Example: Quest Loop
            # Go to the task master
            char.move(x=1, y=2)
 
-           # New quest
+           # New task
            task = char.tasks.new()
            code = task.task.code
            total = task.task.total
-           print(f"Quest {i+1}: kill {total}x {code}")
+           print(f"Task {i+1}: kill {total}x {code}")
 
            # Find where the monster spawns
            spots = client.maps.get_all(content_code=code, content_type="monster")
@@ -95,7 +95,7 @@ Full Example: Quest Loop
            # Go back and turn in
            char.move(x=1, y=2)
            char.tasks.complete()
-           print(f"Quest {i+1} done!")
+           print(f"Task {i+1} done!")
 
 Next Step
 ---------

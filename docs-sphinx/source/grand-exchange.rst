@@ -1,7 +1,7 @@
-Grand Exchange (Marketplace)
+Grand Exchange
 =============================
 
-The Grand Exchange (GE) is the **player marketplace**. You can sell
+The Grand Exchange (GE) is the **player Grand Exchange**. You can sell
 your items and buy from others.
 
 Your character must be on a **Grand Exchange tile** to trade.
@@ -89,4 +89,4 @@ Price History
 Next Step
 ---------
 
-Head to :doc:`quests` to accept and complete tasks.
+Head to :doc:`tasks` to accept and complete tasks.

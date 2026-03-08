@@ -41,8 +41,8 @@ Contents
    skills
    equipment
    bank
-   marketplace
-   quests
+   grand-exchange
+   tasks
    trading
    errors
 

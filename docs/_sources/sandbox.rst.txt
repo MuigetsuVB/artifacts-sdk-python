@@ -8,7 +8,7 @@ events at will.
 .. note::
 
    Sandbox endpoints only work on the **sandbox server**. Connect
-   with ``base_url="https://sandbox.artifactsmmo.com"``:
+   with ``base_url="https://api.sandbox.artifactsmmo.com"``:
 
    .. code-block:: python
 
@@ -16,7 +16,7 @@ events at will.
 
       with ArtifactsClient(
           token="your_token",
-          base_url="https://sandbox.artifactsmmo.com",
+          base_url="https://api.sandbox.artifactsmmo.com",
       ) as client:
           # Sandbox-only methods are now available
           pass
@@ -95,7 +95,7 @@ Typical Testing Workflow
    from artifacts import ArtifactsClient
    from artifacts.models.enums import CharacterSkin, XPType
 
-   SANDBOX_URL = "https://sandbox.artifactsmmo.com"
+   SANDBOX_URL = "https://api.sandbox.artifactsmmo.com"
 
    with ArtifactsClient(token="your_token", base_url=SANDBOX_URL) as client:
        # Create a test character

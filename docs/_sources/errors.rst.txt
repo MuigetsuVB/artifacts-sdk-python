@@ -124,7 +124,7 @@ Error Reference Table
      - Conditions not met
    * - ``TaskError``
      - 474+
-     - Quest-related error
+     - Task-related error
    * - ``GrandExchangeError``
      - 433+
      - Grand Exchange error
