@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Domain Reference &#8212; Artifacts MMO SDK 0.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=6403b91c" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=2bd64d3a" />
+    <script src="../_static/documentation_options.js?v=37f418d5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error Reference" href="errors.html" />
+    <link rel="prev" title="Character Reference" href="character.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Artifacts MMO SDK</a></h1>
+
+
+
+<p class="blurb">Python SDK for Artifacts MMO — simple, typed, ready to play.</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Player Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../character.html">Your Character</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inventory.html">Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skills.html">Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bank.html">Bank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../marketplace.html">Grand Exchange (Marketplace)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quests.html">Quests (Tasks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trading.html">Trading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../errors.html">Error Handling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game World</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../game-data.html">Game Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../account.html">Account &amp; Characters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulation.html">Combat Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sandbox.html">Sandbox (Testing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Full Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/first-bot.html">Your First Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/combat-loop.html">Combat Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/resource-farming.html">Resource Farming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/multi-characters.html">Multi-Character Bots</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="character.html">Character Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Domain Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Error Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="character.html" title="previous chapter">Character Reference</a></li>
+      <li>Next: <a href="errors.html" title="next chapter">Error Reference</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="domain-reference">
+<h1>Domain Reference<a class="headerlink" href="#domain-reference" title="Link to this heading">¶</a></h1>
+<section id="bank">
+<h2>Bank<a class="headerlink" href="#bank" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.domains.BankDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.domains.</span></span><span class="sig-name descname"><span class="pre">BankDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/bank.html#BankDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.BankDomain" title="Link to this definition">¶</a></dt>
+<dd><p>Manage bank operations.</p>
+<p>Accessed via <code class="docutils literal notranslate"><span class="pre">character.bank</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">deposit_gold</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">withdraw_items</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">SimpleItemSchema</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">)])</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">buy_expansion</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>]</em>)</p></li>
+<li><p><strong>cooldown_ref</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.BankDomain.deposit_gold">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deposit_gold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/bank.html#BankDomain.deposit_gold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.BankDomain.deposit_gold" title="Link to this definition">¶</a></dt>
+<dd><p>Deposit gold into the bank.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>BankGoldTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.BankDomain.withdraw_gold">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">withdraw_gold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/bank.html#BankDomain.withdraw_gold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.BankDomain.withdraw_gold" title="Link to this definition">¶</a></dt>
+<dd><p>Withdraw gold from the bank.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>BankGoldTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.BankDomain.deposit_items">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deposit_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/bank.html#BankDomain.deposit_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.BankDomain.deposit_items" title="Link to this definition">¶</a></dt>
+<dd><p>Deposit items into the bank.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><em>SimpleItemSchema</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>BankItemTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.BankDomain.withdraw_items">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">withdraw_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/bank.html#BankDomain.withdraw_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.BankDomain.withdraw_items" title="Link to this definition">¶</a></dt>
+<dd><p>Withdraw items from the bank.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><em>SimpleItemSchema</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>BankItemTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.BankDomain.buy_expansion">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">buy_expansion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/bank.html#BankDomain.buy_expansion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.BankDomain.buy_expansion" title="Link to this definition">¶</a></dt>
+<dd><p>Purchase a 20-slot bank expansion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>BankExtensionTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="equipment">
+<h2>Equipment<a class="headerlink" href="#equipment" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.domains.EquipmentDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.domains.</span></span><span class="sig-name descname"><span class="pre">EquipmentDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/equipment.html#EquipmentDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.EquipmentDomain" title="Link to this definition">¶</a></dt>
+<dd><p>Manage character equipment.</p>
+<p>Accessed via <code class="docutils literal notranslate"><span class="pre">character.equipment</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">equip</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_sword&quot;</span><span class="p">,</span> <span class="n">slot</span><span class="o">=</span><span class="n">ItemSlot</span><span class="o">.</span><span class="n">WEAPON</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">unequip</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="n">ItemSlot</span><span class="o">.</span><span class="n">HELMET</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>]</em>)</p></li>
+<li><p><strong>cooldown_ref</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.EquipmentDomain.equip">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">equip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/equipment.html#EquipmentDomain.equip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.EquipmentDomain.equip" title="Link to this definition">¶</a></dt>
+<dd><p>Equip an item into a slot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>slot</strong> (<em>ItemSlot</em>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>EquipRequestSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.EquipmentDomain.unequip">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unequip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/equipment.html#EquipmentDomain.unequip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.EquipmentDomain.unequip" title="Link to this definition">¶</a></dt>
+<dd><p>Unequip an item from a slot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slot</strong> (<em>ItemSlot</em>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>EquipRequestSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="skills">
+<h2>Skills<a class="headerlink" href="#skills" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.domains.SkillsDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.domains.</span></span><span class="sig-name descname"><span class="pre">SkillsDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/skills.html#SkillsDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.SkillsDomain" title="Link to this definition">¶</a></dt>
+<dd><p>Manage skill actions (gathering, crafting, recycling).</p>
+<p>Accessed via <code class="docutils literal notranslate"><span class="pre">character.skills</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">gather</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">craft</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_sword&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">recycle</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;wooden_shield&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>]</em>)</p></li>
+<li><p><strong>cooldown_ref</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.SkillsDomain.gather">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gather</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/skills.html#SkillsDomain.gather"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.SkillsDomain.gather" title="Link to this definition">¶</a></dt>
+<dd><p>Gather a resource at the current map location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>SkillDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.SkillsDomain.craft">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">craft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/skills.html#SkillsDomain.craft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.SkillsDomain.craft" title="Link to this definition">¶</a></dt>
+<dd><p>Craft an item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>SkillDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.SkillsDomain.recycle">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">recycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/skills.html#SkillsDomain.recycle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.SkillsDomain.recycle" title="Link to this definition">¶</a></dt>
+<dd><p>Recycle an item into materials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>RecyclingDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="grand-exchange">
+<h2>Grand Exchange<a class="headerlink" href="#grand-exchange" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.domains.GrandExchangeDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.domains.</span></span><span class="sig-name descname"><span class="pre">GrandExchangeDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/ge.html#GrandExchangeDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.GrandExchangeDomain" title="Link to this definition">¶</a></dt>
+<dd><p>Manage Grand Exchange operations.</p>
+<p>Accessed via <code class="docutils literal notranslate"><span class="pre">character.ge</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;order-123&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">cancel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;order-123&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>]</em>)</p></li>
+<li><p><strong>cooldown_ref</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.GrandExchangeDomain.buy">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">buy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/ge.html#GrandExchangeDomain.buy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.GrandExchangeDomain.buy" title="Link to this definition">¶</a></dt>
+<dd><p>Buy items from an existing sell order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>GETransactionListSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.GrandExchangeDomain.sell">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/ge.html#GrandExchangeDomain.sell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.GrandExchangeDomain.sell" title="Link to this definition">¶</a></dt>
+<dd><p>Create a sell order on the Grand Exchange.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>price</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>GEOrderTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.GrandExchangeDomain.create_buy_order">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_buy_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/ge.html#GrandExchangeDomain.create_buy_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.GrandExchangeDomain.create_buy_order" title="Link to this definition">¶</a></dt>
+<dd><p>Create a buy order on the Grand Exchange.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>price</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>GEOrderTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.GrandExchangeDomain.fill">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/ge.html#GrandExchangeDomain.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.GrandExchangeDomain.fill" title="Link to this definition">¶</a></dt>
+<dd><p>Fill an existing buy order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>GETransactionListSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.GrandExchangeDomain.cancel">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/ge.html#GrandExchangeDomain.cancel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.GrandExchangeDomain.cancel" title="Link to this definition">¶</a></dt>
+<dd><p>Cancel an existing order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>GEOrderTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="inventory">
+<h2>Inventory<a class="headerlink" href="#inventory" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.domains.InventoryDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.domains.</span></span><span class="sig-name descname"><span class="pre">InventoryDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/inventory.html#InventoryDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.InventoryDomain" title="Link to this definition">¶</a></dt>
+<dd><p>Manage inventory items.</p>
+<p>Accessed via <code class="docutils literal notranslate"><span class="pre">character.inventory</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;cooked_chicken&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;old_sword&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>]</em>)</p></li>
+<li><p><strong>cooldown_ref</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.InventoryDomain.use">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">use</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/inventory.html#InventoryDomain.use"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.InventoryDomain.use" title="Link to this definition">¶</a></dt>
+<dd><p>Use a consumable item from inventory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>UseItemSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.InventoryDomain.delete">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/inventory.html#InventoryDomain.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.InventoryDomain.delete" title="Link to this definition">¶</a></dt>
+<dd><p>Permanently delete an item from inventory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>DeleteItemSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.domains.TasksDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.domains.</span></span><span class="sig-name descname"><span class="pre">TasksDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/tasks.html#TasksDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TasksDomain" title="Link to this definition">¶</a></dt>
+<dd><p>Manage tasks from the Tasks Master.</p>
+<p>Accessed via <code class="docutils literal notranslate"><span class="pre">character.tasks</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">trade</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">complete</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">exchange</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>]</em>)</p></li>
+<li><p><strong>cooldown_ref</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TasksDomain.new">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/tasks.html#TasksDomain.new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TasksDomain.new" title="Link to this definition">¶</a></dt>
+<dd><p>Accept a new task from the Tasks Master.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>TaskDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TasksDomain.complete">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">complete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/tasks.html#TasksDomain.complete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TasksDomain.complete" title="Link to this definition">¶</a></dt>
+<dd><p>Complete and turn in the current task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>RewardDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TasksDomain.exchange">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exchange</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/tasks.html#TasksDomain.exchange"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TasksDomain.exchange" title="Link to this definition">¶</a></dt>
+<dd><p>Exchange 6 task coins for a reward.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>RewardDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TasksDomain.trade">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">trade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/tasks.html#TasksDomain.trade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TasksDomain.trade" title="Link to this definition">¶</a></dt>
+<dd><p>Trade items with the Tasks Master.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>TaskTradeDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TasksDomain.cancel">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/tasks.html#TasksDomain.cancel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TasksDomain.cancel" title="Link to this definition">¶</a></dt>
+<dd><p>Cancel the current task (costs 1 task coin).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>TaskCancelledSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="trading">
+<h2>Trading<a class="headerlink" href="#trading" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.domains.TradingDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.domains.</span></span><span class="sig-name descname"><span class="pre">TradingDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/trading.html#TradingDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TradingDomain" title="Link to this definition">¶</a></dt>
+<dd><p>Manage NPC trading and player-to-player transfers.</p>
+<p>Accessed via <code class="docutils literal notranslate"><span class="pre">character.trading</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">npc_buy</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;healing_potion&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">npc_sell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">give_gold</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="s2">&quot;Friend&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>]</em>)</p></li>
+<li><p><strong>cooldown_ref</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TradingDomain.npc_buy">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">npc_buy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/trading.html#TradingDomain.npc_buy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TradingDomain.npc_buy" title="Link to this definition">¶</a></dt>
+<dd><p>Buy from an NPC merchant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>NpcMerchantTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TradingDomain.npc_sell">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">npc_sell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/trading.html#TradingDomain.npc_sell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TradingDomain.npc_sell" title="Link to this definition">¶</a></dt>
+<dd><p>Sell to an NPC merchant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>NpcMerchantTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TradingDomain.give_gold">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">give_gold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">character</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/trading.html#TradingDomain.give_gold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TradingDomain.give_gold" title="Link to this definition">¶</a></dt>
+<dd><p>Give gold to another character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>character</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>GiveGoldDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.TradingDomain.give_items">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">give_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">character</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/trading.html#TradingDomain.give_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.TradingDomain.give_items" title="Link to this definition">¶</a></dt>
+<dd><p>Give items to another character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><em>SimpleItemSchema</em><em>]</em>)</p></li>
+<li><p><strong>character</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>GiveItemDataSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2026, Artifacts MMO SDK Contributors.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/reference/domains.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

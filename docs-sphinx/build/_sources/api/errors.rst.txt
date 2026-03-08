@@ -1,9 +1,0 @@
-Errors
-======
-
-Error handling and exceptions.
-
-.. automodule:: artifacts.errors
-   :members:
-   :undoc-members:
-   :show-inheritance:

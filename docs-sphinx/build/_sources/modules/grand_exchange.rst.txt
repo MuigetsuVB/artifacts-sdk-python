@@ -1,9 +1,0 @@
-Grand Exchange
-==============
-
-API for the Grand Exchange (marketplace).
-
-.. automodule:: artifacts.api.grand_exchange
-   :members:
-   :undoc-members:
-   :show-inheritance:

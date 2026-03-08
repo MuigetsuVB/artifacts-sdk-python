@@ -1,9 +1,0 @@
-Resources
-=========
-
-API for resource gathering.
-
-.. automodule:: artifacts.api.resources
-   :members:
-   :undoc-members:
-   :show-inheritance:

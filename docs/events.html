@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Events &#8212; Artifacts MMO SDK 0.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=6403b91c" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=2bd64d3a" />
+    <script src="_static/documentation_options.js?v=37f418d5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Account &amp; Characters" href="account.html" />
+    <link rel="prev" title="Game Data" href="game-data.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Artifacts MMO SDK</a></h1>
+
+
+
+<p class="blurb">Python SDK for Artifacts MMO — simple, typed, ready to play.</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Player Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="character.html">Your Character</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skills.html">Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank.html">Bank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marketplace.html">Grand Exchange (Marketplace)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quests.html">Quests (Tasks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trading.html">Trading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Error Handling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game World</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="game-data.html">Game Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#view-active-events">View Active Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#browse-all-events">Browse All Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spawn-an-event-members-only">Spawn an Event (Members Only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fighting-event-monsters">Fighting Event Monsters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account &amp; Characters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulation.html">Combat Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox (Testing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Full Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/first-bot.html">Your First Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/combat-loop.html">Combat Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/resource-farming.html">Resource Farming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/multi-characters.html">Multi-Character Bots</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/client.html">Client Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/character.html">Character Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/domains.html">Domain Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/errors.html">Error Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="game-data.html" title="previous chapter">Game Data</a></li>
+      <li>Next: <a href="account.html" title="next chapter">Account &amp; Characters</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="events">
+<h1>Events<a class="headerlink" href="#events" title="Link to this heading">¶</a></h1>
+<p>Events are <strong>limited-time spawns</strong> that appear on the map. They can
+be special monsters, resources, or other content that’s only available
+for a short period.</p>
+<section id="view-active-events">
+<h2>View Active Events<a class="headerlink" href="#view-active-events" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># See what&#39;s happening right now</span>
+<span class="n">active</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">get_all_active</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">active</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">) — expires </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">expiration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="browse-all-events">
+<h2>Browse All Events<a class="headerlink" href="#browse-all-events" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># See all event definitions (including past ones)</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="spawn-an-event-members-only">
+<h2>Spawn an Event (Members Only)<a class="headerlink" href="#spawn-an-event-members-only" title="Link to this heading">¶</a></h2>
+<p>Members (founders) can <strong>spawn events</strong> manually:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spawn an event by code</span>
+<span class="n">event</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;special_boss&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spawned </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">events.spawn()</span></code> requires a <strong>member/founder</strong> account. Free
+accounts can only view active events.</p>
+</div>
+</section>
+<section id="fighting-event-monsters">
+<h2>Fighting Event Monsters<a class="headerlink" href="#fighting-event-monsters" title="Link to this heading">¶</a></h2>
+<p>Once an event is active, move your character to its tile and fight:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check active events</span>
+<span class="n">active</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">get_all_active</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">active</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="n">active</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Event: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Move there and fight</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fight</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2026, Artifacts MMO SDK Contributors.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/events.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

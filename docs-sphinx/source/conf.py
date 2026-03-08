@@ -41,7 +41,7 @@ html_theme = "alabaster"
 html_static_path = ["_static"]
 
 html_theme_options = {
-    "description": "SDK Python pour Artifacts MMO — simple, typé, prêt à jouer.",
+    "description": "Python SDK for Artifacts MMO — simple, typed, ready to play.",
     "github_button": False,
     "fixed_sidebar": True,
     "sidebar_collapse": True,

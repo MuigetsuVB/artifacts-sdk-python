@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Combat Loop &#8212; Artifacts MMO SDK 0.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=6403b91c" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=2bd64d3a" />
+    <script src="../_static/documentation_options.js?v=37f418d5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Resource Farming" href="resource-farming.html" />
+    <link rel="prev" title="Your First Bot" href="first-bot.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Artifacts MMO SDK</a></h1>
+
+
+
+<p class="blurb">Python SDK for Artifacts MMO — simple, typed, ready to play.</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Player Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../character.html">Your Character</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inventory.html">Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skills.html">Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bank.html">Bank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../marketplace.html">Grand Exchange (Marketplace)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quests.html">Quests (Tasks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trading.html">Trading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../errors.html">Error Handling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game World</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../game-data.html">Game Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../account.html">Account &amp; Characters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulation.html">Combat Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sandbox.html">Sandbox (Testing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Full Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="first-bot.html">Your First Bot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Combat Loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#full-code">Full Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-points">Key Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-next">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resource-farming.html">Resource Farming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi-characters.html">Multi-Character Bots</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/client.html">Client Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/character.html">Character Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/domains.html">Domain Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/errors.html">Error Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="first-bot.html" title="previous chapter">Your First Bot</a></li>
+      <li>Next: <a href="resource-farming.html" title="next chapter">Resource Farming</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="combat-loop">
+<h1>Combat Loop<a class="headerlink" href="#combat-loop" title="Link to this heading">¶</a></h1>
+<p>A robust combat loop that fights monsters, handles errors, and
+automatically rests when HP gets low.</p>
+<section id="full-code">
+<h2>Full Code<a class="headerlink" href="#full-code" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">artifacts.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContentNotOnMapError</span><span class="p">,</span> <span class="n">InventoryFullError</span>
+
+<span class="n">TOKEN</span> <span class="o">=</span> <span class="s2">&quot;your_token_here&quot;</span>
+<span class="n">CHAR_NAME</span> <span class="o">=</span> <span class="s2">&quot;MyFighter&quot;</span>
+<span class="n">FIGHT_X</span><span class="p">,</span> <span class="n">FIGHT_Y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>   <span class="c1"># chicken spot</span>
+<span class="n">MAX_FIGHTS</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">REST_THRESHOLD</span> <span class="o">=</span> <span class="mf">0.4</span>       <span class="c1"># rest below 40% HP</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">TOKEN</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">CHAR_NAME</span><span class="p">)</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">] Level </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">level</span><span class="si">}</span><span class="s2"> HP </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">hp</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">max_hp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Move to fight spot</span>
+    <span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">x</span> <span class="o">!=</span> <span class="n">FIGHT_X</span> <span class="ow">or</span> <span class="n">info</span><span class="o">.</span><span class="n">y</span> <span class="o">!=</span> <span class="n">FIGHT_Y</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moving to (</span><span class="si">{</span><span class="n">FIGHT_X</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">FIGHT_Y</span><span class="si">}</span><span class="s2">)...&quot;</span><span class="p">)</span>
+        <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">FIGHT_X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">FIGHT_Y</span><span class="p">)</span>
+
+    <span class="n">fights</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">fights</span> <span class="o">&lt;</span> <span class="n">MAX_FIGHTS</span><span class="p">:</span>
+        <span class="c1"># Check HP</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">hp</span> <span class="o">&lt;</span> <span class="n">info</span><span class="o">.</span><span class="n">max_hp</span> <span class="o">*</span> <span class="n">REST_THRESHOLD</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Low HP (</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">hp</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">max_hp</span><span class="si">}</span><span class="s2">), resting...&quot;</span><span class="p">)</span>
+            <span class="n">rest</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">rest</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">rest</span><span class="o">.</span><span class="n">hp_restored</span><span class="si">}</span><span class="s2"> HP&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Fight</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">ContentNotOnMapError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No monster here, stopping.&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">except</span> <span class="n">InventoryFullError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inventory full! Stopping.&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="n">fight</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">fight</span>
+        <span class="n">cr</span> <span class="o">=</span> <span class="n">fight</span><span class="o">.</span><span class="n">characters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">fights</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;WIN&quot;</span> <span class="k">if</span> <span class="n">fight</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;win&quot;</span> <span class="k">else</span> <span class="s2">&quot;LOSS&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fight #</span><span class="si">{</span><span class="n">fights</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">fight</span><span class="o">.</span><span class="n">turns</span><span class="si">}</span><span class="s2">t) +</span><span class="si">{</span><span class="n">cr</span><span class="o">.</span><span class="n">xp</span><span class="si">}</span><span class="s2">xp +</span><span class="si">{</span><span class="n">cr</span><span class="o">.</span><span class="n">gold</span><span class="si">}</span><span class="s2">g&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Show drops</span>
+        <span class="k">if</span> <span class="n">cr</span><span class="o">.</span><span class="n">drops</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">cr</span><span class="o">.</span><span class="n">drops</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Drop: </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> x</span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">final</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Done! Level </span><span class="si">{</span><span class="n">final</span><span class="o">.</span><span class="n">level</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">final</span><span class="o">.</span><span class="n">gold</span><span class="si">}</span><span class="s2"> gold — </span><span class="si">{</span><span class="n">fights</span><span class="si">}</span><span class="s2"> fights&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="key-points">
+<h2>Key Points<a class="headerlink" href="#key-points" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Auto-rest</strong>: Checks HP before each fight and rests if below threshold</p></li>
+<li><p><strong>Error handling</strong>: Stops gracefully if no monsters or inventory full</p></li>
+<li><p><strong>Configurable</strong>: Change <code class="docutils literal notranslate"><span class="pre">FIGHT_X/Y</span></code>, <code class="docutils literal notranslate"><span class="pre">MAX_FIGHTS</span></code>, <code class="docutils literal notranslate"><span class="pre">REST_THRESHOLD</span></code></p></li>
+</ul>
+</section>
+<section id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Find monster spots: <code class="docutils literal notranslate"><span class="pre">client.maps.get_all(content_type=&quot;monster&quot;)</span></code></p></li>
+<li><p>Fight higher-level monsters as your character levels up</p></li>
+<li><p>If you lose a fight, you still keep your XP but lose some HP</p></li>
+</ul>
+</section>
+<section id="what-s-next">
+<h2>What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="resource-farming.html"><span class="doc">Resource Farming</span></a> — Gather and craft instead of fighting</p></li>
+<li><p><a class="reference internal" href="multi-characters.html"><span class="doc">Multi-Character Bots</span></a> — Run 5 fighters in parallel</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2026, Artifacts MMO SDK Contributors.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/examples/combat-loop.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,9 +1,0 @@
-Monsters
-========
-
-API for monster combat.
-
-.. automodule:: artifacts.api.monsters
-   :members:
-   :undoc-members:
-   :show-inheritance:

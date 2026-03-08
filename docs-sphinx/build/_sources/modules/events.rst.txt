@@ -1,9 +1,0 @@
-Events
-======
-
-API for game events.
-
-.. automodule:: artifacts.api.events
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Your Character &#8212; Artifacts MMO SDK 0.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=6403b91c" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=2bd64d3a" />
+    <script src="_static/documentation_options.js?v=37f418d5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Inventory" href="inventory.html" />
+    <link rel="prev" title="Getting Started" href="getting-started.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Artifacts MMO SDK</a></h1>
+
+
+
+<p class="blurb">Python SDK for Artifacts MMO — simple, typed, ready to play.</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Player Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Your Character</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-controller">Create a Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#direct-actions">Direct Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sub-domains">Sub-Domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cooldowns">Cooldowns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-actions">Other Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#action-history">Action History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-step">Next Step</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skills.html">Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank.html">Bank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marketplace.html">Grand Exchange (Marketplace)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quests.html">Quests (Tasks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trading.html">Trading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Error Handling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game World</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="game-data.html">Game Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account &amp; Characters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulation.html">Combat Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox (Testing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Full Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/first-bot.html">Your First Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/combat-loop.html">Combat Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/resource-farming.html">Resource Farming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/multi-characters.html">Multi-Character Bots</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/client.html">Client Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/character.html">Character Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/domains.html">Domain Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/errors.html">Error Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="getting-started.html" title="previous chapter">Getting Started</a></li>
+      <li>Next: <a href="inventory.html" title="next chapter">Inventory</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="your-character">
+<h1>Your Character<a class="headerlink" href="#your-character" title="Link to this heading">¶</a></h1>
+<p>The character is your <strong>main controller</strong> in the game.
+It moves, fights, gathers, crafts…</p>
+<section id="create-a-controller">
+<h2>Create a Controller<a class="headerlink" href="#create-a-controller" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyChar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This doesn’t create a new character in the game — it just gives
+you a remote control for an existing one.</p>
+</section>
+<section id="direct-actions">
+<h2>Direct Actions<a class="headerlink" href="#direct-actions" title="Link to this heading">¶</a></h2>
+<section id="movement">
+<h3>Movement<a class="headerlink" href="#movement" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># By coordinates</span>
+<span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># By map ID</span>
+<span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">map_id</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Transition (enter building, go underground, etc.)</span>
+<span class="n">char</span><span class="o">.</span><span class="n">transition</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="combat">
+<h3>Combat<a class="headerlink" href="#combat" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple fight</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
+<span class="n">fight</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">fight</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">fight</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># &quot;win&quot; or &quot;loss&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Turns: </span><span class="si">{</span><span class="n">fight</span><span class="o">.</span><span class="n">turns</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># XP and gold earned</span>
+<span class="k">for</span> <span class="n">cr</span> <span class="ow">in</span> <span class="n">fight</span><span class="o">.</span><span class="n">characters</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">cr</span><span class="o">.</span><span class="n">xp</span><span class="si">}</span><span class="s2"> XP, +</span><span class="si">{</span><span class="n">cr</span><span class="o">.</span><span class="n">gold</span><span class="si">}</span><span class="s2"> gold&quot;</span><span class="p">)</span>
+
+<span class="c1"># Drops (loot)</span>
+<span class="k">for</span> <span class="n">cr</span> <span class="ow">in</span> <span class="n">fight</span><span class="o">.</span><span class="n">characters</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cr</span><span class="o">.</span><span class="n">drops</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">drop</span> <span class="ow">in</span> <span class="n">cr</span><span class="o">.</span><span class="n">drops</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drop: </span><span class="si">{</span><span class="n">drop</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> x</span><span class="si">{</span><span class="n">drop</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Boss fight (with other players)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">(</span><span class="n">participants</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Player2&quot;</span><span class="p">,</span> <span class="s2">&quot;Player3&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="rest">
+<h3>Rest<a class="headerlink" href="#rest" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recover HP</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">rest</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">hp_restored</span><span class="si">}</span><span class="s2"> HP&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="character-info">
+<h3>Character Info<a class="headerlink" href="#character-info" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="c1"># General</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Level: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">level</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;XP: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">xp</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">max_xp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gold: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">gold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HP: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">hp</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">max_hp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Position</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Position: (</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Skills</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mining: level </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">mining_level</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Woodcutting: level </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">woodcutting_level</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fishing: level </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">fishing_level</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Inventory</span>
+<span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">inventory</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">slot</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> x</span><span class="si">{</span><span class="n">slot</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sub-domains">
+<h2>Sub-Domains<a class="headerlink" href="#sub-domains" title="Link to this heading">¶</a></h2>
+<p>Your character has <strong>action groups</strong> for each aspect of the game:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>char.skills      → Gathering, crafting, recycling
+char.equipment   → Equip / unequip items
+char.bank        → Bank (gold and items)
+char.inventory   → Use / delete items
+char.ge          → Grand Exchange (marketplace)
+char.tasks       → Quests
+char.trading     → NPC and player-to-player trading
+</pre></div>
+</div>
+<p>Each group has its own methods. They’re covered in the following
+pages!</p>
+</section>
+<section id="cooldowns">
+<h2>Cooldowns<a class="headerlink" href="#cooldowns" title="Link to this heading">¶</a></h2>
+<p>Every action in Artifacts MMO triggers a <strong>cooldown</strong> (wait time).
+By default, the SDK waits automatically before the next action.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># waits for move cooldown</span>
+<span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>           <span class="c1"># waits for fight cooldown</span>
+<span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>           <span class="c1"># waits for previous fight cooldown</span>
+<span class="c1"># Everything is smooth, no time.sleep() needed!</span>
+</pre></div>
+</div>
+<p>If you want to <strong>disable</strong> automatic waiting:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Globally (for all characters)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">auto_wait</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># For a specific character</span>
+<span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyChar&quot;</span><span class="p">,</span> <span class="n">auto_wait</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># For a single action</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">auto_wait=False</span></code>, you’ll have to manage cooldowns yourself
+using <code class="docutils literal notranslate"><span class="pre">wait_for_cooldown()</span></code> or by catching errors.</p>
+</div>
+</section>
+<section id="other-actions">
+<h2>Other Actions<a class="headerlink" href="#other-actions" title="Link to this heading">¶</a></h2>
+<section id="claim-pending-items">
+<h3>Claim Pending Items<a class="headerlink" href="#claim-pending-items" title="Link to this heading">¶</a></h3>
+<p>Items from achievements, GE orders, or events go to your pending
+items. Claim them with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check pending items first</span>
+<span class="n">pending</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">my_account</span><span class="o">.</span><span class="n">get_pending_items</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pending</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pending: </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> x</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Claim by ID</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">claim_item</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Item claimed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="change-skin">
+<h3>Change Skin<a class="headerlink" href="#change-skin" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts.models.enums</span><span class="w"> </span><span class="kn">import</span> <span class="n">CharacterSkin</span>
+
+<span class="n">char</span><span class="o">.</span><span class="n">change_skin</span><span class="p">(</span><span class="n">skin</span><span class="o">=</span><span class="n">CharacterSkin</span><span class="o">.</span><span class="n">WOMEN2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="action-history">
+<h2>Action History<a class="headerlink" href="#action-history" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logs</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get_logs</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">log</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">log</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="next-step">
+<h2>Next Step<a class="headerlink" href="#next-step" title="Link to this heading">¶</a></h2>
+<p>Head to <a class="reference internal" href="inventory.html"><span class="doc">Inventory</span></a> to manage items, then <a class="reference internal" href="skills.html"><span class="doc">Skills</span></a> for gathering and crafting.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2026, Artifacts MMO SDK Contributors.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/character.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

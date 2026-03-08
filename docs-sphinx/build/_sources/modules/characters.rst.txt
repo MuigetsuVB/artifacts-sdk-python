@@ -1,9 +1,0 @@
-Characters
-==========
-
-API for managing characters.
-
-.. automodule:: artifacts.api.characters
-   :members:
-   :undoc-members:
-   :show-inheritance:
