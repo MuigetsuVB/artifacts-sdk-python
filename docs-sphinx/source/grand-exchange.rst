@@ -13,7 +13,7 @@ Your character must be on a **Grand Exchange tile** to trade.
    for m in ge_maps.data:
        print(f"GE at ({m.x}, {m.y})")
 
-Sell an Item
+Create a Sell Order
 -------------
 
 .. code-block:: python
