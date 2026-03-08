@@ -21,6 +21,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
+    "sphinx.ext.githubpages",
 ]
 
 templates_path = ["_templates"]
@@ -37,19 +38,12 @@ autodoc_member_order = "bysource"
 autodoc_typehints = "description"
 
 # -- Options for HTML output ---------------------------------------------------
-html_theme = "alabaster"
+html_theme = "furo"
+html_title = "Artifacts MMO SDK"
 html_static_path = ["_static"]
 
 html_theme_options = {
-    "description": "Python SDK for Artifacts MMO — simple, typed, ready to play.",
-    "github_button": False,
-    "fixed_sidebar": True,
-    "sidebar_collapse": True,
-    "page_width": "960px",
-    "body_max_width": "720px",
-    "font_family": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    "head_font_family": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    "code_font_family": "'Cascadia Code', 'Fira Code', 'Consolas', monospace",
+    "navigation_with_keys": True,
 }
 
 # -- Intersphinx mapping -------------------------------------------------------
