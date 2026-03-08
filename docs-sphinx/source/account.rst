@@ -27,6 +27,21 @@ Account Info
    # Change password
    client.my_account.change_password("old_password", "new_password")
 
+Account Achievements
+---------------------
+
+You can retrieve the achievements of any account, including tracking your own progress:
+
+.. code-block:: python
+
+   # Browse an account's achievements
+   # Parameters: type, completed, page, size
+   achievements = client.accounts.get_achievements("YourAccountName", completed=True)
+   for a in achievements.data:
+       print(f"  {a.name} — Points: {a.points}")
+       if a.completed_at:
+           print(f"  Completed at: {a.completed_at}")
+
 Pending Items
 --------------
 

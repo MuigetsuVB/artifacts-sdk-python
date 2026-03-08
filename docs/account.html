@@ -292,6 +292,19 @@
 </pre></div>
 </div>
 </section>
+<section id="account-achievements">
+<h2>Account Achievements<a class="headerlink" href="#account-achievements" title="Link to this heading">¶</a></h2>
+<p>You can retrieve the achievements of any account, including tracking your own progress:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Browse an account&#39;s achievements</span>
+<span class="c1"># Parameters: type, completed, page, size</span>
+<span class="n">achievements</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">accounts</span><span class="o">.</span><span class="n">get_achievements</span><span class="p">(</span><span class="s2">&quot;YourAccountName&quot;</span><span class="p">,</span> <span class="n">completed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">achievements</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> — Points: </span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">points</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">completed_at</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Completed at: </span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">completed_at</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="pending-items">
 <h2>Pending Items<a class="headerlink" href="#pending-items" title="Link to this heading">¶</a></h2>
 <p>Items from achievements, Grand Exchange buys, or admin gifts end up
@@ -455,6 +468,7 @@ on that character will be lost.</p>
             <ul>
 <li><a class="reference internal" href="#">Account &amp; Characters</a><ul>
 <li><a class="reference internal" href="#account-info">Account Info</a></li>
+<li><a class="reference internal" href="#account-achievements">Account Achievements</a></li>
 <li><a class="reference internal" href="#pending-items">Pending Items</a></li>
 <li><a class="reference internal" href="#ge-history">GE History</a></li>
 <li><a class="reference internal" href="#character-management">Character Management</a><ul>

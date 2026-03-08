@@ -16,6 +16,7 @@ Monsters
    print(f"{chicken.name} — Level {chicken.level} — HP {chicken.hp}")
 
    # Browse all monsters
+   # Parameters: min_level, max_level, name, drop, page, size
    monsters = client.monsters.get_all(min_level=1, max_level=10, size=10)
    for m in monsters.data:
        print(f"{m.name} lv{m.level} HP={m.hp}")
@@ -35,6 +36,7 @@ Items
    print(f"{item.name} — Level {item.level} — {item.type.value}")
 
    # Browse by type
+   # Parameters: min_level, max_level, name, type, craft_skill, craft_material, page, size
    weapons = client.items.get_all(type="weapon", min_level=1, max_level=10)
    for w in weapons.data:
        print(f"{w.name} (lv{w.level})")
@@ -61,6 +63,7 @@ Resources are gathering nodes on the map (trees, rocks, fish, etc.).
    print(f"{copper_rocks.code} — {copper_rocks.skill.value} lv{copper_rocks.level}")
 
    # Browse all resources
+   # Parameters: min_level, max_level, skill, drop, page, size
    resources = client.resources.get_all(skill="mining")
    for r in resources.data:
        print(f"{r.code} — mining lv{r.level}")
@@ -81,6 +84,7 @@ Maps
 .. code-block:: python
 
    # Browse all tiles
+   # Parameters: layer, content_type, content_code, hide_blocked_maps, page, size
    maps = client.maps.get_all(content_type="monster", size=10)
    for m in maps.data:
        print(f"({m.x},{m.y}) — {m.content.code}")
@@ -113,6 +117,7 @@ Achievements
 .. code-block:: python
 
    # Browse all achievements
+   # Parameters: type, page, size
    achievements = client.achievements.get_all()
    for a in achievements.data:
        print(f"{a.code} — {a.name} ({a.type.value})")
@@ -132,6 +137,7 @@ Badges
 .. code-block:: python
 
    # Browse all badges
+   # Parameters: page, size
    badges = client.badges.get_all()
    for b in badges.data:
        print(f"{b.code} — {b.description}")
@@ -146,6 +152,7 @@ Effects
 .. code-block:: python
 
    # Browse all effects
+   # Parameters: page, size
    effects = client.effects.get_all()
    for e in effects.data:
        print(f"{e.code} — {e.name} ({e.type.value})")
@@ -160,6 +167,7 @@ NPCs
 .. code-block:: python
 
    # Browse all NPCs
+   # Parameters: name, type, currency, item, page, size
    npcs = client.npcs.get_all()
    for npc in npcs.data:
        print(f"{npc.name} ({npc.code}) — {npc.type.value}")
@@ -188,6 +196,7 @@ see :doc:`tasks` for that).
 .. code-block:: python
 
    # Browse all task definitions
+   # Parameters: min_level, max_level, skill, type, page, size
    tasks = client.tasks.get_all()
    for t in tasks.data:
        print(f"{t.code} — {t.type.value} lv{t.level}")
@@ -197,6 +206,7 @@ see :doc:`tasks` for that).
    print(f"{task.code} — {task.type.value}")
 
    # Browse task rewards
+   # Parameters: page, size
    rewards = client.tasks.get_all_rewards()
    for r in rewards.data:
        print(f"{r.code}")
@@ -210,6 +220,7 @@ Leaderboard
 .. code-block:: python
 
    # Top characters by combat level
+   # Character parameters: sort, name, page, size
    top = client.leaderboard.get_characters(sort="combat", size=10)
    for c in top.data:
        print(f"#{c.position} {c.name} — lv{c.level}")
@@ -223,6 +234,7 @@ Leaderboard
    result = client.leaderboard.get_characters(name="MyChar")
 
    # Top accounts
+   # Account parameters: sort, name, page, size
    accounts = client.leaderboard.get_accounts(sort="achievements_points", size=10)
    for a in accounts.data:
        print(f"#{a.position} {a.account}")

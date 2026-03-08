@@ -417,6 +417,7 @@ item = client.items.get("copper_ore")
 print(f"{item.name} (lv{item.level}, type={item.type.value})")
 
 # List items with filters
+# Parameters: min_level, max_level, name, type, craft_skill, craft_material, page, size
 page = client.items.get_all(min_level=1, max_level=10, type="resource", size=20)
 for item in page.data:
     print(f"  {item.code}: {item.name}")
@@ -428,6 +429,7 @@ for item in page.data:
 monster = client.monsters.get("chicken")
 print(f"{monster.name} lv{monster.level} HP={monster.hp}")
 
+# Parameters: min_level, max_level, name, drop, page, size
 page = client.monsters.get_all(min_level=1, max_level=5)
 ```
 
@@ -435,6 +437,7 @@ page = client.monsters.get_all(min_level=1, max_level=5)
 
 ```python
 # Find maps containing a specific monster
+# Parameters: layer, content_type, content_code, hide_blocked_maps, page, size
 maps = client.maps.get_all(content_type="monster", content_code="chicken")
 for m in maps.data:
     print(f"  ({m.x},{m.y}) layer={m.layer.value}")
@@ -446,6 +449,7 @@ tile = client.maps.get_by_position("overworld", 0, 1)
 ### Resources
 
 ```python
+# Parameters: min_level, max_level, skill, drop, page, size
 page = client.resources.get_all(skill="mining", min_level=1)
 for r in page.data:
     print(f"  {r.code} (lv{r.level}) drops: {[d.code for d in r.drops]}")
@@ -454,6 +458,7 @@ for r in page.data:
 ### NPCs
 
 ```python
+# Parameters: name, type, currency, item, page, size
 npcs = client.npcs.get_all()
 items = client.npcs.get_items("merchant_1")
 for i in items.data:
@@ -464,23 +469,31 @@ for i in items.data:
 
 ```python
 # Achievements, Badges, Effects
+# Achievement parameters: type, page, size
+# Badge/Effect parameters: page, size
 all_achievements = client.achievements.get_all()
 badges = client.badges.get_all()
 effects = client.effects.get_all()
 
 # Events
+# Parameters: page, size
 active = client.events.get_all_active()
 
 # Tasks
+# Parameters: min_level, max_level, skill, type, page, size
 tasks = client.tasks.get_all(type="monsters", min_level=1)
+# Parameters: page, size
 rewards = client.tasks.get_all_rewards()
 
 # Leaderboard
+# Character/Account parameters: sort, name, page, size
 top_chars = client.leaderboard.get_characters(sort="combat")
 top_accounts = client.leaderboard.get_accounts(sort="gold")
 
 # Grand Exchange
+# Order parameters: code, account, type, page, size
 orders = client.grand_exchange.get_orders(code="copper_ore")
+# History parameters: account, page, size
 history = client.grand_exchange.get_history("copper_ore")
 ```
 
