@@ -294,14 +294,19 @@ your items and buy from others.</p>
 </pre></div>
 </div>
 </section>
-<section id="buy-orders">
-<h2>Buy Orders<a class="headerlink" href="#buy-orders" title="Link to this heading">¶</a></h2>
-<p>You can also create a <strong>buy order</strong> — other players can fill it:</p>
+<section id="create-a-buy-order">
+<h2>Create a Buy Order<a class="headerlink" href="#create-a-buy-order" title="Link to this heading">¶</a></h2>
+<p>You can also create a <strong>buy order</strong> — other players can then fill it by selling items to you:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a buy order</span>
 <span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">create_buy_order</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="c1"># Fill an existing buy order</span>
-<span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="fill-a-buy-order">
+<h2>Fill a Buy Order<a class="headerlink" href="#fill-a-buy-order" title="Link to this heading">¶</a></h2>
+<p>You can sell your items directly to another player’s active buy order:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fill an existing buy order (by its ID)</span>
+<span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;some_order_id&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -407,7 +412,8 @@ your items and buy from others.</p>
 <li><a class="reference internal" href="#">Grand Exchange</a><ul>
 <li><a class="reference internal" href="#sell-an-item">Sell an Item</a></li>
 <li><a class="reference internal" href="#buy-an-item">Buy an Item</a></li>
-<li><a class="reference internal" href="#buy-orders">Buy Orders</a></li>
+<li><a class="reference internal" href="#create-a-buy-order">Create a Buy Order</a></li>
+<li><a class="reference internal" href="#fill-a-buy-order">Fill a Buy Order</a></li>
 <li><a class="reference internal" href="#cancel-an-order">Cancel an Order</a></li>
 <li><a class="reference internal" href="#browse-orders">Browse Orders</a></li>
 <li><a class="reference internal" href="#price-history">Price History</a></li>

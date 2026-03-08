@@ -13,7 +13,7 @@ Your character must be on a **Grand Exchange tile** to trade.
    for m in ge_maps.data:
        print(f"GE at ({m.x}, {m.y})")
 
-Sell an Item
+Create a Sell Order
 -------------
 
 .. code-block:: python
@@ -32,18 +32,25 @@ Buy an Item
    # Buy from an existing listing (by its ID)
    char.ge.buy(id=12345, quantity=5)
 
-Buy Orders
------------
+Create a Buy Order
+-------------------
 
-You can also create a **buy order** — other players can fill it:
+You can also create a **buy order** — other players can then fill it by selling items to you:
 
 .. code-block:: python
 
    # Create a buy order
    char.ge.create_buy_order(code="iron_ore", quantity=50, price=4)
 
-   # Fill an existing buy order
-   char.ge.fill(id=12345, quantity=10)
+Fill a Buy Order
+-----------------
+
+You can sell your items directly to another player's active buy order:
+
+.. code-block:: python
+
+   # Fill an existing buy order (by its ID)
+   char.ge.fill(id="some_order_id", quantity=10)
 
 Cancel an Order
 ----------------
