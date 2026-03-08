@@ -1,0 +1,183 @@
+Architecture Overview
+=====================
+
+The SDK has a simple 2-level structure.
+
+Level 1: Client (Connection)
+-----------------------------
+
+The **Client** is your entry point to connect to the Artifacts MMO API.
+
+.. code-block:: python
+
+   from artifacts import ArtifactsClient
+   
+   # Sync client
+   client = ArtifactsClient(token="your_token")
+   
+   # Async client
+   from artifacts import AsyncArtifactsClient
+   async with AsyncArtifactsClient(token="your_token") as client:
+       ...
+
+**What the Client does:**
+
+- Manages authentication (your API token)
+- Handles HTTP connections
+- Provides methods to query game data (items, monsters, maps)
+- Creates **Character** controllers
+
+**Common operations:**
+
+.. code-block:: python
+
+   # Get game data
+   items = client.get_all_items()
+   monsters = client.get_all_monsters()
+   maps = client.get_all_maps()
+   
+   # Create a character controller
+   char = client.character("MyCharacterName")
+
+Level 2: Character (Your Game Controller)
+------------------------------------------
+
+The **Character** is your interface to control a character in the game.
+
+.. code-block:: python
+
+   char = client.character("MyCharacter")
+
+**The Character organizes ALL actions into logical groups:**
+
+.. code-block:: python
+
+   # Direct methods (combat & movement)
+   char.move(x=1, y=2)
+   char.fight()
+   char.rest()
+   char.get()
+   
+   # Bank operations (grouped under char.bank)
+   char.bank.deposit_gold(quantity=100)
+   char.bank.withdraw_items(items=[...])
+   
+   # Crafting & gathering (grouped under char.skills)
+   char.skills.gather()
+   char.skills.craft(code="iron_sword")
+   
+   # Equipment (grouped under char.equipment)
+   char.equipment.equip(code="iron_sword", slot="weapon")
+   
+   # Trading (grouped under char.ge)
+   char.ge.sell(code="copper_ore", quantity=10, price=50)
+
+**Why this organization?**
+
+Instead of having 100+ methods directly on Character like:
+
+.. code-block:: python
+
+   char.bank_deposit_gold()      # ❌ cluttered
+   char.bank_withdraw_gold()
+   char.equipment_equip()
+   char.equipment_unequip()
+   char.craft()
+   char.gather()
+   # ... 100+ methods
+
+We group related features:
+
+.. code-block:: python
+
+   char.bank.deposit_gold()      # ✅ organized
+   char.bank.withdraw_gold()
+   char.equipment.equip()
+   char.equipment.unequip()
+   char.skills.craft()
+   char.skills.gather()
+
+**Available feature groups:**
+
++-------------------+------------------------------------------+
+| Group             | What it does                             |
++===================+==========================================+
+| ``char.bank``     | Deposit/withdraw gold and items          |
++-------------------+------------------------------------------+
+| ``char.equipment``| Equip/unequip weapons and armor          |
++-------------------+------------------------------------------+
+| ``char.skills``   | Craft, gather resources, recycle items   |
++-------------------+------------------------------------------+
+| ``char.ge``       | Trade on the Grand Exchange marketplace  |
++-------------------+------------------------------------------+
+| ``char.inventory``| Manage inventory items                   |
++-------------------+------------------------------------------+
+| ``char.tasks``    | Accept and complete quests               |
++-------------------+------------------------------------------+
+| ``char.trading``  | Player-to-player trading                 |
++-------------------+------------------------------------------+
+
+That's it! Simple structure:
+
+.. code-block:: text
+
+   Client                  → Connect to API, get game data
+   └── Character           → Control one character
+       ├── move(), fight() → Direct actions  
+       ├── .bank           → Bank operations
+       ├── .skills         → Crafting/gathering
+       ├── .equipment      → Equip items
+       └── .ge             → Trading
+
+Complete Example
+----------------
+
+Here's how it all works together:
+
+.. code-block:: python
+
+   from artifacts import ArtifactsClient
+   
+   # Level 1: Connect to API
+   with ArtifactsClient(token="your_token") as client:
+       
+       # Query game data (via Client)
+       copper_rocks = client.get_resource(code="copper_rocks")
+       print(f"Copper at: {copper_rocks.x}, {copper_rocks.y}")
+       
+       # Level 2: Get character and control it
+       miner = client.character("Miner")
+       
+       # Direct actions
+       miner.move(x=copper_rocks.x, y=copper_rocks.y)
+       
+       # Grouped actions (via char.skills)
+       result = miner.skills.gather()
+       print(f"Gathered: {result.details.items}")
+       
+       # Move to bank and deposit (via char.bank)
+       miner.move(x=4, y=1)
+       miner.bank.deposit_items(items=result.details.items)
+
+Quick Reference
+---------------
+
+**Structure:**
+
+.. code-block:: text
+
+   ArtifactsClient
+   ├── get_all_items()          ← Query game data
+   ├── get_all_monsters()
+   └── character("Name")         ← Get Character controller
+       ├── move(x, y)            ← Direct methods
+       ├── fight()
+       ├── rest()
+       └── Feature groups        ← Organized methods
+           ├── .bank             (deposit, withdraw)
+           ├── .equipment        (equip, unequip)
+           ├── .skills           (craft, gather)
+           ├── .ge               (buy, sell)
+           ├── .inventory        (items, delete)
+           ├── .tasks            (quests)
+           └── .trading          (player trades)

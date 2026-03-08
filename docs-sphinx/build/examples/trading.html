@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading Examples &mdash; Artifacts MMO Python SDK 0.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=37f418d5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Client" href="../api/client.html" />
+    <link rel="prev" title="Crafting Examples" href="crafting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Artifacts MMO Python SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basic.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combat.html">Combat Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crafting.html">Crafting Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Trading Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#grand-exchange-basics">Grand Exchange Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-market-prices">Checking Market Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-orders">Managing Orders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#price-history">Price History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automated-trading-bot">Automated Trading Bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bulk-trading">Bulk Trading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#market-analysis">Market Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-character-trading">Cross-Character Trading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/models.html">Data Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/domains.html">Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/errors.html">Errors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/characters.html">Characters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/maps.html">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/monsters.html">Monsters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/grand_exchange.html">Grand Exchange</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/events.html">Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artifacts MMO Python SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Trading Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/trading.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="trading-examples">
+<h1>Trading Examples<a class="headerlink" href="#trading-examples" title="Link to this heading"></a></h1>
+<section id="grand-exchange-basics">
+<h2>Grand Exchange Basics<a class="headerlink" href="#grand-exchange-basics" title="Link to this heading"></a></h2>
+<p>Buy and sell items on the Grand Exchange:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Trader&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Move to Grand Exchange</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Example: GE location</span>
+
+    <span class="c1"># Sell items</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">ge_sell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Listed 10 copper ore at 50 gold each&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Buy items</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">ge_buy</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bought 5 iron ore at 100 gold each&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-market-prices">
+<h2>Checking Market Prices<a class="headerlink" href="#checking-market-prices" title="Link to this heading"></a></h2>
+<p>View current market prices:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="c1"># Get all GE items</span>
+    <span class="n">ge_items</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_all_ge_items</span><span class="p">()</span>
+
+    <span class="c1"># Find specific item</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ge_items</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="s2">&quot;copper_ore&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Copper Ore:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Stock: </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">stock</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sell price: </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">sell_price</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Buy price: </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">buy_price</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+</pre></div>
+</div>
+</section>
+<section id="managing-orders">
+<h2>Managing Orders<a class="headerlink" href="#managing-orders" title="Link to this heading"></a></h2>
+<p>View and cancel your active orders:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Trader&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Move to GE</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Get active sell orders</span>
+    <span class="n">orders</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">ge_get_orders</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Active sell orders:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">orders</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s2">x </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> @ </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2"> gold&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Cancel an order if needed</span>
+    <span class="k">if</span> <span class="n">orders</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="n">order_id</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">char</span><span class="o">.</span><span class="n">ge_cancel</span><span class="p">(</span><span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cancelled order </span><span class="si">{</span><span class="n">order_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="price-history">
+<h2>Price History<a class="headerlink" href="#price-history" title="Link to this heading"></a></h2>
+<p>Track item prices over time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="c1"># Get GE item with history</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_ge_item</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Price history for </span><span class="si">{</span><span class="n">history</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">history</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">history</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">date</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2"> gold&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="automated-trading-bot">
+<h2>Automated Trading Bot<a class="headerlink" href="#automated-trading-bot" title="Link to this heading"></a></h2>
+<p>Buy low, sell high automatically:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span><span class="p">,</span> <span class="n">wait_for_cooldown</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;AutoTrader&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Move to GE</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Initial cooldown</span>
+
+    <span class="n">items_to_trade</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">,</span> <span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="s2">&quot;coal&quot;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">item_code</span> <span class="ow">in</span> <span class="n">items_to_trade</span><span class="p">:</span>
+        <span class="c1"># Check current price</span>
+        <span class="n">ge_item</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_ge_item</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">item_code</span><span class="p">)</span>
+        <span class="n">current_price</span> <span class="o">=</span> <span class="n">ge_item</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sell_price</span>
+
+        <span class="c1"># Buy if price is low</span>
+        <span class="k">if</span> <span class="n">current_price</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>  <span class="c1"># Your threshold</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Buying </span><span class="si">{</span><span class="n">item_code</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">current_price</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">ge_buy</span><span class="p">(</span>
+                <span class="n">code</span><span class="o">=</span><span class="n">item_code</span><span class="p">,</span>
+                <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                <span class="n">price</span><span class="o">=</span><span class="n">current_price</span>
+            <span class="p">)</span>
+            <span class="n">wait_for_cooldown</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cooldown_expiration</span><span class="p">)</span>
+
+        <span class="c1"># Sell if you have stock and price is high</span>
+        <span class="n">char_data</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">char_data</span><span class="o">.</span><span class="n">inventory</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">slot</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="n">item_code</span> <span class="ow">and</span> <span class="n">current_price</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selling </span><span class="si">{</span><span class="n">item_code</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">current_price</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">ge_sell</span><span class="p">(</span>
+                    <span class="n">code</span><span class="o">=</span><span class="n">item_code</span><span class="p">,</span>
+                    <span class="n">quantity</span><span class="o">=</span><span class="n">slot</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span>
+                    <span class="n">price</span><span class="o">=</span><span class="n">current_price</span> <span class="o">+</span> <span class="mi">10</span>
+                <span class="p">)</span>
+                <span class="n">wait_for_cooldown</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cooldown_expiration</span><span class="p">)</span>
+                <span class="k">break</span>
+</pre></div>
+</div>
+</section>
+<section id="bulk-trading">
+<h2>Bulk Trading<a class="headerlink" href="#bulk-trading" title="Link to this heading"></a></h2>
+<p>Trade large quantities efficiently:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncArtifactsClient</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">bulk_sell</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">item_code</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">ge_sell</span><span class="p">(</span>
+            <span class="n">code</span><span class="o">=</span><span class="n">item_code</span><span class="p">,</span>
+            <span class="n">quantity</span><span class="o">=</span><span class="n">quantity</span><span class="p">,</span>
+            <span class="n">price</span><span class="o">=</span><span class="n">price</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Listed </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2">x </span><span class="si">{</span><span class="n">item_code</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2"> gold&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cooldown</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cooldown</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="n">trader</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;BulkTrader&quot;</span><span class="p">)</span>
+
+        <span class="n">items_to_sell</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;coal&quot;</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="k">await</span> <span class="n">bulk_sell</span><span class="p">(</span><span class="n">trader</span><span class="p">,</span> <span class="n">items_to_sell</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="market-analysis">
+<h2>Market Analysis<a class="headerlink" href="#market-analysis" title="Link to this heading"></a></h2>
+<p>Analyze profitable items:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="c1"># Get all GE items</span>
+    <span class="n">ge_items</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_all_ge_items</span><span class="p">()</span>
+
+    <span class="c1"># Find items with good margins</span>
+    <span class="n">profitable</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ge_items</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">buy_price</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">sell_price</span><span class="p">:</span>
+            <span class="n">margin</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">sell_price</span> <span class="o">-</span> <span class="n">item</span><span class="o">.</span><span class="n">buy_price</span>
+            <span class="n">margin_percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">margin</span> <span class="o">/</span> <span class="n">item</span><span class="o">.</span><span class="n">buy_price</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+            <span class="k">if</span> <span class="n">margin_percent</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>  <span class="c1"># 20% margin</span>
+                <span class="n">profitable</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+                    <span class="s2">&quot;margin&quot;</span><span class="p">:</span> <span class="n">margin</span><span class="p">,</span>
+                    <span class="s2">&quot;margin_percent&quot;</span><span class="p">:</span> <span class="n">margin_percent</span><span class="p">,</span>
+                    <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">stock</span>
+                <span class="p">})</span>
+
+    <span class="c1"># Sort by margin percentage</span>
+    <span class="n">profitable</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;margin_percent&quot;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top profitable items:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">profitable</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;margin_percent&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> gold, stock: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;stock&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cross-character-trading">
+<h2>Cross-Character Trading<a class="headerlink" href="#cross-character-trading" title="Link to this heading"></a></h2>
+<p>Transfer items between your characters via bank:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span><span class="p">,</span> <span class="n">wait_for_cooldown</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">gatherer</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Gatherer&quot;</span><span class="p">)</span>
+    <span class="n">crafter</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Crafter&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Gatherer deposits resources</span>
+    <span class="n">gatherer</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Bank location</span>
+    <span class="n">wait_for_cooldown</span><span class="p">(</span><span class="n">gatherer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">cooldown_expiration</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">gatherer</span><span class="o">.</span><span class="n">bank_deposit</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gatherer deposited 50 copper ore&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Crafter withdraws resources</span>
+    <span class="n">crafter</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">wait_for_cooldown</span><span class="p">(</span><span class="n">crafter</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">cooldown_expiration</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">crafter</span><span class="o">.</span><span class="n">bank_withdraw</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Crafter withdrew 50 copper ore&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Crafter can now use the resources for crafting</span>
+    <span class="n">crafter</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Workshop</span>
+    <span class="n">wait_for_cooldown</span><span class="p">(</span><span class="n">crafter</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">cooldown_expiration</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="crafting.html" class="btn btn-neutral float-left" title="Crafting Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api/client.html" class="btn btn-neutral float-right" title="Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Artifacts Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

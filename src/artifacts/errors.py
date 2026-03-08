@@ -92,6 +92,18 @@ class ConditionsNotMetError(ArtifactsAPIError):
     """Conditions not met (496)."""
 
 
+class RetryExhaustedError(ArtifactsError):
+    """All retry attempts have been exhausted."""
+
+    def __init__(
+        self,
+        message: str,
+        last_exception: Exception | None = None,
+    ):
+        self.last_exception = last_exception
+        super().__init__(message)
+
+
 # Map API error codes to exception classes
 ERROR_MAP: dict[int, type[ArtifactsAPIError]] = {
     404: NotFoundError,

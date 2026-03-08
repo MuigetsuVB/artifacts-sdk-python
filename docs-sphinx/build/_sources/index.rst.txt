@@ -1,0 +1,77 @@
+.. Artifacts MMO Python SDK documentation master file, created by
+   sphinx-quickstart on Thu Mar  5 17:23:29 2026.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Artifacts MMO Python SDK
+========================
+
+A Python SDK for the Artifacts MMO API with sync and async support.
+
+.. code-block:: bash
+
+   pip install artifacts-mmo
+
+Quick Start
+-----------
+
+**Sync:**
+
+.. code-block:: python
+
+   from artifacts import ArtifactsClient
+   
+   with ArtifactsClient(token="your_token") as client:
+       char = client.character("MyCharacter")
+       char.move(x=1, y=2)
+       char.gather()
+       char.fight()
+
+**Async:**
+
+.. code-block:: python
+
+   from artifacts import AsyncArtifactsClient
+   import asyncio
+   
+   async def main():
+       async with AsyncArtifactsClient(token="your_token") as client:
+           char = client.character("MyCharacter")
+           await char.move(x=1, y=2)
+           await char.fight()
+   
+   asyncio.run(main())
+
+Documentation
+-------------
+
+.. toctree::
+   :maxdepth: 1
+
+   api-reference
+   architecture
+   examples/basic
+   examples/combat
+   examples/crafting
+   examples/trading
+
+Advanced Topics
+---------------
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Details:
+
+   api/client
+   api/character
+   api/domains
+   api/models
+   api/errors
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

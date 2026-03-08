@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Errors &mdash; Artifacts MMO Python SDK 0.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=37f418d5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Characters" href="../modules/characters.html" />
+    <link rel="prev" title="Domains" href="domains.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Artifacts MMO Python SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/basic.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/combat.html">Combat Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crafting.html">Crafting Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/trading.html">Trading Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Data Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Domains</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Errors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.ArtifactsError"><code class="docutils literal notranslate"><span class="pre">ArtifactsError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.ArtifactsAPIError"><code class="docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#artifacts.errors.ArtifactsAPIError.__init__"><code class="docutils literal notranslate"><span class="pre">ArtifactsAPIError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.CharacterNotFoundError"><code class="docutils literal notranslate"><span class="pre">CharacterNotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.CooldownActiveError"><code class="docutils literal notranslate"><span class="pre">CooldownActiveError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.ActionInProgressError"><code class="docutils literal notranslate"><span class="pre">ActionInProgressError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.NotFoundError"><code class="docutils literal notranslate"><span class="pre">NotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.InventoryFullError"><code class="docutils literal notranslate"><span class="pre">InventoryFullError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.InsufficientGoldError"><code class="docutils literal notranslate"><span class="pre">InsufficientGoldError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.AlreadyAtDestinationError"><code class="docutils literal notranslate"><span class="pre">AlreadyAtDestinationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.SkillLevelTooLowError"><code class="docutils literal notranslate"><span class="pre">SkillLevelTooLowError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.EquipmentSlotError"><code class="docutils literal notranslate"><span class="pre">EquipmentSlotError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.MemberRequiredError"><code class="docutils literal notranslate"><span class="pre">MemberRequiredError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.MapBlockedError"><code class="docutils literal notranslate"><span class="pre">MapBlockedError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.NoPathError"><code class="docutils literal notranslate"><span class="pre">NoPathError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.ContentNotOnMapError"><code class="docutils literal notranslate"><span class="pre">ContentNotOnMapError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.TaskError"><code class="docutils literal notranslate"><span class="pre">TaskError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.GrandExchangeError"><code class="docutils literal notranslate"><span class="pre">GrandExchangeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.ConditionsNotMetError"><code class="docutils literal notranslate"><span class="pre">ConditionsNotMetError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.RetryExhaustedError"><code class="docutils literal notranslate"><span class="pre">RetryExhaustedError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#artifacts.errors.RetryExhaustedError.__init__"><code class="docutils literal notranslate"><span class="pre">RetryExhaustedError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#artifacts.errors.raise_for_error"><code class="docutils literal notranslate"><span class="pre">raise_for_error()</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/characters.html">Characters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/maps.html">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/monsters.html">Monsters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/grand_exchange.html">Grand Exchange</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/events.html">Events</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artifacts MMO Python SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Errors</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/errors.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="errors">
+<h1>Errors<a class="headerlink" href="#errors" title="Link to this heading"></a></h1>
+<p>Error handling and exceptions.</p>
+<p id="module-artifacts.errors">Exception hierarchy for the Artifacts wrapper.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.ArtifactsError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">ArtifactsError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#ArtifactsError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.ArtifactsError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base exception for all artifacts wrapper errors.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.ArtifactsAPIError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">ArtifactsAPIError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#ArtifactsAPIError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.ArtifactsAPIError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsError" title="artifacts.errors.ArtifactsError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsError</span></code></a></p>
+<p>The API returned an error response.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.errors.ArtifactsAPIError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/errors.html#ArtifactsAPIError.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.ArtifactsAPIError.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<em>int</em>)</p></li>
+<li><p><strong>message</strong> (<em>str</em>)</p></li>
+<li><p><strong>data</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.CharacterNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">CharacterNotFoundError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#CharacterNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.CharacterNotFoundError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Character not found (498).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.CooldownActiveError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">CooldownActiveError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#CooldownActiveError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.CooldownActiveError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Character is in cooldown (499).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.ActionInProgressError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">ActionInProgressError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#ActionInProgressError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.ActionInProgressError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>An action is already in progress (486).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.NotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">NotFoundError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#NotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.NotFoundError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Resource not found (404).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.InventoryFullError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">InventoryFullError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#InventoryFullError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.InventoryFullError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Character inventory is full (497).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.InsufficientGoldError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">InsufficientGoldError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#InsufficientGoldError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.InsufficientGoldError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Not enough gold (492).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.AlreadyAtDestinationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">AlreadyAtDestinationError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#AlreadyAtDestinationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.AlreadyAtDestinationError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Already at destination (490).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.SkillLevelTooLowError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">SkillLevelTooLowError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#SkillLevelTooLowError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.SkillLevelTooLowError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Skill level too low (493).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.EquipmentSlotError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">EquipmentSlotError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#EquipmentSlotError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.EquipmentSlotError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Equipment slot error (491).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.MemberRequiredError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">MemberRequiredError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#MemberRequiredError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.MemberRequiredError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Member / founder required (451).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.MapBlockedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">MapBlockedError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#MapBlockedError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.MapBlockedError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Map is blocked (596).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.NoPathError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">NoPathError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#NoPathError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.NoPathError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>No path to destination (595).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.ContentNotOnMapError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">ContentNotOnMapError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#ContentNotOnMapError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.ContentNotOnMapError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Content not found on map (598).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.TaskError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">TaskError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#TaskError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.TaskError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Task-related error (474-489).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.GrandExchangeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">GrandExchangeError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#GrandExchangeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.GrandExchangeError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Grand Exchange error (433-438).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.ValidationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">ValidationError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#ValidationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.ValidationError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Request validation error (422).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.ConditionsNotMetError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">ConditionsNotMetError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#ConditionsNotMetError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.ConditionsNotMetError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsAPIError" title="artifacts.errors.ArtifactsAPIError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsAPIError</span></code></a></p>
+<p>Conditions not met (496).</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="artifacts.errors.RetryExhaustedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">RetryExhaustedError</span></span><a class="reference internal" href="../_modules/artifacts/errors.html#RetryExhaustedError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.RetryExhaustedError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#artifacts.errors.ArtifactsError" title="artifacts.errors.ArtifactsError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtifactsError</span></code></a></p>
+<p>All retry attempts have been exhausted.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.errors.RetryExhaustedError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/errors.html#RetryExhaustedError.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.RetryExhaustedError.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>str</em>)</p></li>
+<li><p><strong>last_exception</strong> (<em>Exception</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="artifacts.errors.raise_for_error">
+<span class="sig-prename descclassname"><span class="pre">artifacts.errors.</span></span><span class="sig-name descname"><span class="pre">raise_for_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/errors.html#raise_for_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.errors.raise_for_error" title="Link to this definition"></a></dt>
+<dd><p>Parse an error response body and raise the appropriate exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>status</strong> (<em>int</em>)</p></li>
+<li><p><strong>body</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="domains.html" class="btn btn-neutral float-left" title="Domains" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../modules/characters.html" class="btn btn-neutral float-right" title="Characters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Artifacts Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

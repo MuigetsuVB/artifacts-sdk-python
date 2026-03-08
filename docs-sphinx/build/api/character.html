@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Character &mdash; Artifacts MMO Python SDK 0.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=37f418d5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Character Feature Groups" href="domains.html" />
+    <link rel="prev" title="Client" href="client.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Artifacts MMO Python SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/basic.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/combat.html">Combat Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crafting.html">Crafting Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/trading.html">Trading Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SDK Components:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Character</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-your-character">Getting Your Character</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#direct-actions">Direct Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#domain-objects">Domain Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#character-class-reference">Character Class Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#artifacts.Character"><code class="docutils literal notranslate"><span class="pre">Character</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.__init__"><code class="docutils literal notranslate"><span class="pre">Character.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.get"><code class="docutils literal notranslate"><span class="pre">Character.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.get_logs"><code class="docutils literal notranslate"><span class="pre">Character.get_logs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.move"><code class="docutils literal notranslate"><span class="pre">Character.move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.transition"><code class="docutils literal notranslate"><span class="pre">Character.transition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.fight"><code class="docutils literal notranslate"><span class="pre">Character.fight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.rest"><code class="docutils literal notranslate"><span class="pre">Character.rest()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.claim_item"><code class="docutils literal notranslate"><span class="pre">Character.claim_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.Character.change_skin"><code class="docutils literal notranslate"><span class="pre">Character.change_skin()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-patterns">Common Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Character Feature Groups</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Models:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Data Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artifacts MMO Python SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Character</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/character.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="character">
+<h1>Character<a class="headerlink" href="#character" title="Link to this heading"></a></h1>
+<p>The <strong>Character</strong> object is a controller for a specific character in your account.</p>
+<p><strong>Purpose:</strong></p>
+<ul class="simple">
+<li><p>Control one character’s actions</p></li>
+<li><p>Direct access to movement and combat</p></li>
+<li><p>Access to domain-organized features (bank, crafting, trading, etc.)</p></li>
+</ul>
+<p><strong>Create a Character controller:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># From a client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span>
+<span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyCharacterName&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="getting-your-character">
+<h2>Getting Your Character<a class="headerlink" href="#getting-your-character" title="Link to this heading"></a></h2>
+<p>Each Character controller is tied to one character name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="c1"># Create controllers for different characters</span>
+    <span class="n">fighter</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Fighter&quot;</span><span class="p">)</span>
+    <span class="n">mage</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Mage&quot;</span><span class="p">)</span>
+    <span class="n">crafter</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Crafter&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Each operates independently</span>
+    <span class="n">fighter</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mage</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="direct-actions">
+<h2>Direct Actions<a class="headerlink" href="#direct-actions" title="Link to this heading"></a></h2>
+<p>The Character provides <strong>direct methods</strong> for common actions:</p>
+<p><strong>Movement:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Move to coordinates</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Check new position</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Now at: (</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Combat:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fight a monster at current location</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fight</span><span class="o">.</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;XP gained: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fight</span><span class="o">.</span><span class="n">xp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Rest &amp; Recovery:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rest to recover HP (must be at spawn point)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">rest</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HP: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">hp</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max_hp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Get Character Data:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get full character info</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Level: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">level</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Position: (</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HP: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">hp</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">max_hp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check inventory</span>
+<span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">inventory</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">slot</span><span class="o">.</span><span class="n">code</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">slot</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s2">x </span><span class="si">{</span><span class="n">slot</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="domain-objects">
+<h2>Domain Objects<a class="headerlink" href="#domain-objects" title="Link to this heading"></a></h2>
+<p>For organized feature access, Character groups related methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">.</span><span class="n">bank</span>       <span class="c1"># Bank operations (deposit, withdraw)</span>
+<span class="n">char</span><span class="o">.</span><span class="n">equipment</span>  <span class="c1"># Equip/unequip items</span>
+<span class="n">char</span><span class="o">.</span><span class="n">skills</span>     <span class="c1"># Crafting, gathering, recycling</span>
+<span class="n">char</span><span class="o">.</span><span class="n">ge</span>         <span class="c1"># Grand Exchange trading</span>
+<span class="n">char</span><span class="o">.</span><span class="n">inventory</span>  <span class="c1"># Inventory management</span>
+<span class="n">char</span><span class="o">.</span><span class="n">tasks</span>      <span class="c1"># Quest management</span>
+<span class="n">char</span><span class="o">.</span><span class="n">trading</span>    <span class="c1"># Player-to-player trading</span>
+</pre></div>
+</div>
+<p>These are just <strong>attributes of the Character</strong> that group related methods together.</p>
+<p>See <a class="reference internal" href="domains.html"><span class="doc">Character Feature Groups</span></a> for detailed documentation of each group.</p>
+<p><strong>Example using grouped methods:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crafting (via char.skills)</span>
+<span class="n">char</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">craft</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_sword&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Banking (via char.bank)</span>
+<span class="n">char</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">deposit_gold</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Trading (via char.ge)</span>
+<span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="character-class-reference">
+<h2>Character Class Reference<a class="headerlink" href="#character-class-reference" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.Character">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.</span></span><span class="sig-name descname"><span class="pre">Character</span></span><a class="reference internal" href="../_modules/artifacts/character.html#Character"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Controller for a single character.</p>
+<p>Created via <code class="docutils literal notranslate"><span class="pre">client.character(&quot;name&quot;)</span></code>.  Actions are organized
+into game-oriented sub-objects:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyChar&quot;</span><span class="p">)</span>
+
+<span class="c1"># Direct actions (combat &amp; movement)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">rest</span><span class="p">()</span>
+
+<span class="c1"># Domain sub-objects</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">craft</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_sword&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">deposit_gold</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">equip</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_sword&quot;</span><span class="p">,</span> <span class="n">slot</span><span class="o">=</span><span class="n">ItemSlot</span><span class="o">.</span><span class="n">WEAPON</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;cooked_chicken&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">ge</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">npc_buy</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;healing_potion&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, the SDK automatically waits for cooldowns before each
+action so that results are returned immediately.  Override per-call
+with <code class="docutils literal notranslate"><span class="pre">wait=False</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># returns immediately</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>)</p></li>
+<li><p><strong>http</strong> (<em>HttpClient</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>bool</em><em> | </em><em>list</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.get">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.get" title="Link to this definition"></a></dt>
+<dd><p>Fetch full character info (GET /characters/{name}).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="models.html#artifacts.models.character.CharacterSchema" title="artifacts.models.character.CharacterSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharacterSchema</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.get_logs">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_logs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.get_logs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.get_logs" title="Link to this definition"></a></dt>
+<dd><p>Fetch character action history (GET /my/logs/{name}).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataPage[LogSchema]</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>page</strong> (<em>int</em>)</p></li>
+<li><p><strong>size</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.move">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.move" title="Link to this definition"></a></dt>
+<dd><p>Move the character.</p>
+<p>Provide either <code class="docutils literal notranslate"><span class="pre">map_id</span></code> or <code class="docutils literal notranslate"><span class="pre">x</span></code> + <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="models.html#artifacts.models.responses.CharacterMovementDataSchema" title="artifacts.models.responses.CharacterMovementDataSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharacterMovementDataSchema</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>y</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>map_id</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.transition">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.transition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.transition" title="Link to this definition"></a></dt>
+<dd><p>Execute a layer transition (go underground, enter building, etc.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="models.html#artifacts.models.responses.CharacterTransitionDataSchema" title="artifacts.models.responses.CharacterTransitionDataSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharacterTransitionDataSchema</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.fight">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">participants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.fight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.fight" title="Link to this definition"></a></dt>
+<dd><p>Fight a monster on the current map tile.</p>
+<p>For bosses, pass up to 2 additional character names in
+<code class="docutils literal notranslate"><span class="pre">participants</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="models.html#artifacts.models.responses.CharacterFightDataSchema" title="artifacts.models.responses.CharacterFightDataSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharacterFightDataSchema</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>participants</strong> (<em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.rest">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.rest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.rest" title="Link to this definition"></a></dt>
+<dd><p>Rest to recover HP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="models.html#artifacts.models.responses.CharacterRestDataSchema" title="artifacts.models.responses.CharacterRestDataSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharacterRestDataSchema</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.claim_item">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">claim_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.claim_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.claim_item" title="Link to this definition"></a></dt>
+<dd><p>Claim a pending item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="models.html#artifacts.models.responses.ClaimPendingItemDataSchema" title="artifacts.models.responses.ClaimPendingItemDataSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClaimPendingItemDataSchema</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>id</strong> (<em>int</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.Character.change_skin">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">change_skin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/character.html#Character.change_skin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.Character.change_skin" title="Link to this definition"></a></dt>
+<dd><p>Change character skin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="models.html#artifacts.models.responses.ChangeSkinCharacterDataSchema" title="artifacts.models.responses.ChangeSkinCharacterDataSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeSkinCharacterDataSchema</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>skin</strong> (<a class="reference internal" href="models.html#artifacts.models.enums.CharacterSkin" title="artifacts.models.enums.CharacterSkin"><em>CharacterSkin</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="common-patterns">
+<h2>Common Patterns<a class="headerlink" href="#common-patterns" title="Link to this heading"></a></h2>
+<p><strong>Context Manager (Recommended):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyChar&quot;</span><span class="p">)</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># Automatic cleanup</span>
+</pre></div>
+</div>
+<p><strong>Multiple Characters:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">gatherer</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Gatherer&quot;</span><span class="p">)</span>
+    <span class="n">crafter</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Crafter&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Gatherer collects resources</span>
+    <span class="n">gatherer</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">gatherer</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">gather</span><span class="p">()</span>
+
+    <span class="c1"># Transfer via bank</span>
+    <span class="n">gatherer</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">gatherer</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">deposit_items</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+
+    <span class="c1"># Crafter picks up and crafts</span>
+    <span class="n">crafter</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">crafter</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">withdraw_items</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+    <span class="n">crafter</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">crafter</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">craft</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_sword&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Async Multiple Characters:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fight_loop</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">char</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fight</span><span class="o">.</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cooldown</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="n">fighters</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Fighter1&quot;</span><span class="p">),</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Fighter2&quot;</span><span class="p">),</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Fighter3&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="c1"># All fight in parallel</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">fight_loop</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fighters</span><span class="p">])</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="client.html"><span class="doc">Client</span></a> - Creating clients and getting game data</p></li>
+<li><p><a class="reference internal" href="domains.html"><span class="doc">Character Feature Groups</span></a> - Feature-organized domain objects</p></li>
+<li><p><a class="reference internal" href="../examples/basic.html"><span class="doc">Basic Usage</span></a> - Basic usage examples</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="client.html" class="btn btn-neutral float-left" title="Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="domains.html" class="btn btn-neutral float-right" title="Character Feature Groups" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Artifacts Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

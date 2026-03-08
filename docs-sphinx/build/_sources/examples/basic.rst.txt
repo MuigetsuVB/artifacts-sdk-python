@@ -1,0 +1,118 @@
+Basic Usage
+===========
+
+Getting Started
+---------------
+
+Initialize the client and get your character:
+
+.. code-block:: python
+
+   from artifacts import ArtifactsClient
+   
+   # Create a sync client
+   client = ArtifactsClient(token="your_token_here")
+   
+   # Get your character
+   char = client.character("MyCharacter")
+   print(f"Character: {char.name} - Level {char.level}")
+
+Movement
+--------
+
+Move your character around the map:
+
+.. code-block:: python
+
+   # Move to coordinates
+   response = char.move(x=1, y=2)
+   print(f"Moved to ({response.data.x}, {response.data.y})")
+   
+   # Check cooldown
+   print(f"Cooldown: {response.data.cooldown} seconds")
+
+Gathering Resources
+-------------------
+
+Gather resources from the current location:
+
+.. code-block:: python
+
+   # Make sure you're at a resource location
+   char.move(x=2, y=0)  # Example: copper rocks location
+   
+   # Gather the resource
+   result = char.gather()
+   
+   # Check what you gathered
+   if result.details.items:
+       for item in result.details.items:
+           print(f"Gathered: {item.quantity}x {item.code}")
+
+Checking Inventory
+------------------
+
+View your character's inventory:
+
+.. code-block:: python
+
+   # Get character data (includes inventory)
+   char_data = char.get()
+   
+   # Print inventory
+   for slot in char_data.inventory:
+       if slot.code:
+           print(f"{slot.quantity}x {slot.code}")
+
+Bank Operations
+---------------
+
+Deposit and withdraw items from the bank:
+
+.. code-block:: python
+
+   # Move to a bank location
+   char.move(x=4, y=1)
+   
+   # Deposit items
+   char.bank_deposit(code="copper_ore", quantity=10)
+   print("Deposited 10 copper ore")
+   
+   # Withdraw items
+   char.bank_withdraw(code="copper_ore", quantity=5)
+   print("Withdrew 5 copper ore")
+
+Using Context Manager
+---------------------
+
+The recommended way to use the client:
+
+.. code-block:: python
+
+   from artifacts import ArtifactsClient
+   
+   with ArtifactsClient(token="your_token") as client:
+       char = client.character("MyCharacter")
+       char.move(x=1, y=1)
+       # Client automatically closes when exiting the block
+
+Async Example
+-------------
+
+Using the async client:
+
+.. code-block:: python
+
+   from artifacts import AsyncArtifactsClient
+   import asyncio
+   
+   async def main():
+       async with AsyncArtifactsClient(token="your_token") as client:
+           char = client.character("MyCharacter")
+           
+           # All operations are async
+           await char.move(x=1, y=2)
+           result = await char.gather()
+           print(f"Gathered: {result.details.items}")
+   
+   asyncio.run(main())

@@ -1,0 +1,9 @@
+Tasks
+=====
+
+API for tasks and quests.
+
+.. automodule:: artifacts.api.tasks
+   :members:
+   :undoc-members:
+   :show-inheritance:

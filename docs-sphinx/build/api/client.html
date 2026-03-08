@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client &mdash; Artifacts MMO Python SDK 0.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=37f418d5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Character" href="character.html" />
+    <link rel="prev" title="Trading Examples" href="../examples/trading.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Artifacts MMO Python SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/basic.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/combat.html">Combat Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crafting.html">Crafting Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/trading.html">Trading Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core Components:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sync-client">Sync Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#artifacts.ArtifactsClient"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.__init__"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.character"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.character()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.auto_wait"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.auto_wait</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.server"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.server</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.token"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.accounts"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.accounts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.my_account"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.my_account</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.characters"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.characters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.achievements"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.achievements</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.badges"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.badges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.effects"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.effects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.events"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.events</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.grand_exchange"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.grand_exchange</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.items"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.items</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.leaderboard"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.leaderboard</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.maps"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.maps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.monsters"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.monsters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.npcs"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.npcs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.resources"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.resources</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.tasks"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.tasks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.simulation"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.simulation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.sandbox"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.sandbox</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.ArtifactsClient.close"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.close()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#async-client">Async Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#artifacts.AsyncArtifactsClient"><code class="docutils literal notranslate"><span class="pre">AsyncArtifactsClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.AsyncArtifactsClient.__init__"><code class="docutils literal notranslate"><span class="pre">AsyncArtifactsClient.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.AsyncArtifactsClient.auto_wait"><code class="docutils literal notranslate"><span class="pre">AsyncArtifactsClient.auto_wait</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.AsyncArtifactsClient.character"><code class="docutils literal notranslate"><span class="pre">AsyncArtifactsClient.character()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.AsyncArtifactsClient.start"><code class="docutils literal notranslate"><span class="pre">AsyncArtifactsClient.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifacts.AsyncArtifactsClient.close"><code class="docutils literal notranslate"><span class="pre">AsyncArtifactsClient.close()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="character.html">Character</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Domains</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Models:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Data Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artifacts MMO Python SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Client</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/client.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="client">
+<h1>Client<a class="headerlink" href="#client" title="Link to this heading"></a></h1>
+<p>The Client is your <strong>entry point</strong> to the Artifacts MMO API.</p>
+<p><strong>Purpose:</strong></p>
+<ul class="simple">
+<li><p>Authenticate with your API token</p></li>
+<li><p>Query game data (items, monsters, maps, resources)</p></li>
+<li><p>Create Character controllers</p></li>
+</ul>
+<p><strong>There are two client types:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ArtifactsClient</span></code> - Synchronous (blocking)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AsyncArtifactsClient</span></code> - Asynchronous (non-blocking)</p></li>
+</ul>
+<section id="sync-client">
+<h2>Sync Client<a class="headerlink" href="#sync-client" title="Link to this heading"></a></h2>
+<p>Use the sync client for simple scripts and tools:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="c1"># Query game data</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_all_items</span><span class="p">()</span>
+
+    <span class="c1"># Control a character</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyCharacter&quot;</span><span class="p">)</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.</span></span><span class="sig-name descname"><span class="pre">ArtifactsClient</span></span><a class="reference internal" href="../_modules/artifacts/sync_client.html#ArtifactsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.ArtifactsClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Synchronous SDK client for the Artifacts MMO API.</p>
+<p>No <code class="docutils literal notranslate"><span class="pre">async</span></code>/<code class="docutils literal notranslate"><span class="pre">await</span></code> needed – every call blocks until complete:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArtifactsClient</span>
+
+<span class="k">with</span> <span class="n">ArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyChar&quot;</span><span class="p">)</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> lv</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">level</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># blocks, auto-waits cooldown</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>         <span class="c1"># blocks, auto-waits cooldown</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">craft</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_sword&quot;</span><span class="p">)</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">bank</span><span class="o">.</span><span class="n">deposit_gold</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – JWT token for authentication.</p></li>
+<li><p><strong>base_url</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – API base URL.  Defaults to the production server.</p></li>
+<li><p><strong>auto_wait</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), every action automatically sleeps
+until its cooldown expires.</p></li>
+<li><p><strong>retry</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span>) – Custom retry configuration.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://api.artifactsmmo.com'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/sync_client.html#ArtifactsClient.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.ArtifactsClient.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>base_url</strong> (<em>str</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>bool</em>)</p></li>
+<li><p><strong>retry</strong> (<em>Any</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.character">
+<span class="sig-name descname"><span class="pre">character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/sync_client.html#ArtifactsClient.character"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.ArtifactsClient.character" title="Link to this definition"></a></dt>
+<dd><p>Return a synchronous <code class="xref py py-class docutils literal notranslate"><span class="pre">SyncCharacter</span></code> controller for <em>name</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">SyncCharacter</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>bool</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.auto_wait">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_wait</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.auto_wait" title="Link to this definition"></a></dt>
+<dd><p>Whether actions automatically sleep until their cooldown expires.</p>
+<p>Setting this on the client affects <strong>all</strong> characters that were
+created without an explicit per-character override:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">auto_wait</span> <span class="o">=</span> <span class="kc">False</span>   <span class="c1"># disable globally</span>
+<span class="n">client</span><span class="o">.</span><span class="n">auto_wait</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># re-enable globally</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.server">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">server</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.server" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.token">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.token" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.accounts">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">accounts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.accounts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.my_account">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_account</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.my_account" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.characters">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">characters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.characters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.achievements">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">achievements</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.achievements" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.badges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">badges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.badges" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.effects">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">effects</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.effects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.events">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">events</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.events" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.grand_exchange">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">grand_exchange</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.grand_exchange" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.items">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.items" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.leaderboard">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">leaderboard</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.leaderboard" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.maps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">maps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.maps" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.monsters">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">monsters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.monsters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.npcs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">npcs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.npcs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.resources">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.resources" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.tasks">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.tasks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.simulation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">simulation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.simulation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.sandbox">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sandbox</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.ArtifactsClient.sandbox" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.ArtifactsClient.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/sync_client.html#ArtifactsClient.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.ArtifactsClient.close" title="Link to this definition"></a></dt>
+<dd><p>Close the HTTP session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="async-client">
+<h2>Async Client<a class="headerlink" href="#async-client" title="Link to this heading"></a></h2>
+<p>Use the async client for bots managing multiple characters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncArtifactsClient</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="c1"># Control multiple characters in parallel</span>
+        <span class="n">char1</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Fighter&quot;</span><span class="p">)</span>
+        <span class="n">char2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;Mage&quot;</span><span class="p">)</span>
+
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+            <span class="n">char1</span><span class="o">.</span><span class="n">fight</span><span class="p">(),</span>
+            <span class="n">char2</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
+        <span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="artifacts.AsyncArtifactsClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artifacts.</span></span><span class="sig-name descname"><span class="pre">AsyncArtifactsClient</span></span><a class="reference internal" href="../_modules/artifacts/client.html#AsyncArtifactsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.AsyncArtifactsClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Async SDK client for the Artifacts MMO API.</p>
+<p>Use as an async context manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">AsyncArtifactsClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">char</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="s2">&quot;MyChar&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>    <span class="c1"># auto-waits cooldown</span>
+    <span class="k">await</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>            <span class="c1"># auto-waits cooldown</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – JWT token for authentication.  Generate one via
+<code class="docutils literal notranslate"><span class="pre">client.token.generate(username,</span> <span class="pre">password)</span></code> or pass an
+existing token.</p></li>
+<li><p><strong>base_url</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – API base URL.  Defaults to the production server.</p></li>
+<li><p><strong>auto_wait</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), every action automatically sleeps
+until its cooldown expires.  Disable globally here or
+per-character/per-call.</p></li>
+<li><p><strong>retry</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">RetryConfig</span></code>]</span>) – Custom retry configuration.  Defaults to 3 retries with
+exponential backoff.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.AsyncArtifactsClient.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://api.artifactsmmo.com'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/client.html#AsyncArtifactsClient.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.AsyncArtifactsClient.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>base_url</strong> (<em>str</em>)</p></li>
+<li><p><strong>auto_wait</strong> (<em>bool</em>)</p></li>
+<li><p><strong>retry</strong> (<em>RetryConfig</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.AsyncArtifactsClient.auto_wait">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_wait</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#artifacts.AsyncArtifactsClient.auto_wait" title="Link to this definition"></a></dt>
+<dd><p>Whether actions automatically sleep until their cooldown expires.</p>
+<p>Setting this on the client affects <strong>all</strong> characters that were
+created without an explicit per-character override:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">auto_wait</span> <span class="o">=</span> <span class="kc">False</span>   <span class="c1"># disable globally</span>
+<span class="n">client</span><span class="o">.</span><span class="n">auto_wait</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># re-enable globally</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.AsyncArtifactsClient.character">
+<span class="sig-name descname"><span class="pre">character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/client.html#AsyncArtifactsClient.character"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.AsyncArtifactsClient.character" title="Link to this definition"></a></dt>
+<dd><p>Return a <a class="reference internal" href="character.html#artifacts.Character" title="artifacts.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">Character</span></code></a> controller for <em>name</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>auto_wait</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]</span>) – Override the client-level <code class="docutils literal notranslate"><span class="pre">auto_wait</span></code> setting for this
+character.  If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), the character shares the
+client reference and will reflect any future changes to
+<code class="docutils literal notranslate"><span class="pre">client.auto_wait</span></code> automatically.</p></li>
+<li><p><strong>name</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="character.html#artifacts.Character" title="artifacts.character.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">Character</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.AsyncArtifactsClient.start">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/client.html#AsyncArtifactsClient.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.AsyncArtifactsClient.start" title="Link to this definition"></a></dt>
+<dd><p>Start the HTTP session (called automatically by <code class="docutils literal notranslate"><span class="pre">__aenter__</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.AsyncArtifactsClient.close">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/client.html#AsyncArtifactsClient.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.AsyncArtifactsClient.close" title="Link to this definition"></a></dt>
+<dd><p>Close the HTTP session (called automatically by <code class="docutils literal notranslate"><span class="pre">__aexit__</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples/trading.html" class="btn btn-neutral float-left" title="Trading Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="character.html" class="btn btn-neutral float-right" title="Character" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Artifacts Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

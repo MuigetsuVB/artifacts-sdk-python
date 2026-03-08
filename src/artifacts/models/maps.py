@@ -39,4 +39,4 @@ class MapSchema(BaseModel):
     y: int
     layer: MapLayer
     access: Optional[AccessSchema] = None
-    interactions: list[InteractionSchema]
+    interactions: Optional[InteractionSchema] = None

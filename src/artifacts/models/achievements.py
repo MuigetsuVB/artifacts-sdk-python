@@ -10,7 +10,7 @@ from .enums import AchievementType
 
 class AchievementObjectiveSchema(BaseModel):
     type: AchievementType
-    target: str
+    target: Optional[str] = None
     total: int
 
 
@@ -30,7 +30,7 @@ class AchievementSchema(BaseModel):
 
 class AccountAchievementObjectiveSchema(BaseModel):
     type: AchievementType
-    target: str
+    target: Optional[str] = None
     progress: int
     total: int
 

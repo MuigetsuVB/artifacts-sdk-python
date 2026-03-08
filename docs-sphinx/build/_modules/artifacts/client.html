@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>artifacts.client &mdash; Documentation Artifacts MMO Python Wrapper 0.2.1</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=bf78f4d7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=e6b791cb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Artifacts MMO Python Wrapper
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide de l'API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/models.html">Modèles de données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/domains.html">Domaines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/errors.html">Erreurs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/characters.html">Personnages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/items.html">Objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/maps.html">Cartes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/monsters.html">Monstres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/resources.html">Ressources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/grand_exchange.html">Grand Exchange</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/tasks.html">Tâches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/events.html">Événements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Artifacts MMO Python Wrapper</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">artifacts.client</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de artifacts.client</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Main client entry point for the Artifacts MMO SDK.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.character</span><span class="w"> </span><span class="kn">import</span> <span class="n">Character</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HttpClient</span><span class="p">,</span> <span class="n">RetryConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.accounts</span><span class="w"> </span><span class="kn">import</span> <span class="n">AccountsAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.achievements</span><span class="w"> </span><span class="kn">import</span> <span class="n">AchievementsAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.badges</span><span class="w"> </span><span class="kn">import</span> <span class="n">BadgesAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.characters</span><span class="w"> </span><span class="kn">import</span> <span class="n">CharactersAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.effects</span><span class="w"> </span><span class="kn">import</span> <span class="n">EffectsAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventsAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.grand_exchange</span><span class="w"> </span><span class="kn">import</span> <span class="n">GrandExchangeAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.items</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemsAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.leaderboard</span><span class="w"> </span><span class="kn">import</span> <span class="n">LeaderboardAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.maps</span><span class="w"> </span><span class="kn">import</span> <span class="n">MapsAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.monsters</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonstersAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.my_account</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyAccountAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.npcs</span><span class="w"> </span><span class="kn">import</span> <span class="n">NPCsAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResourcesAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.sandbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">SandboxAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.server</span><span class="w"> </span><span class="kn">import</span> <span class="n">ServerAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.simulation</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.tasks</span><span class="w"> </span><span class="kn">import</span> <span class="n">TasksAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.api.token</span><span class="w"> </span><span class="kn">import</span> <span class="n">TokenAPI</span>
+
+
+<div class="viewcode-block" id="AsyncArtifactsClient">
+<a class="viewcode-back" href="../../api/client.html#artifacts.AsyncArtifactsClient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AsyncArtifactsClient</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Async SDK client for the Artifacts MMO API.</span>
+
+<span class="sd">    Use as an async context manager::</span>
+
+<span class="sd">        async with AsyncArtifactsClient(token=&quot;your_token&quot;) as client:</span>
+<span class="sd">            char = client.character(&quot;MyChar&quot;)</span>
+<span class="sd">            await char.move(x=0, y=1)    # auto-waits cooldown</span>
+<span class="sd">            await char.fight()            # auto-waits cooldown</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    token:</span>
+<span class="sd">        JWT token for authentication.  Generate one via</span>
+<span class="sd">        ``client.token.generate(username, password)`` or pass an</span>
+<span class="sd">        existing token.</span>
+<span class="sd">    base_url:</span>
+<span class="sd">        API base URL.  Defaults to the production server.</span>
+<span class="sd">    auto_wait:</span>
+<span class="sd">        If ``True`` (default), every action automatically sleeps</span>
+<span class="sd">        until its cooldown expires.  Disable globally here or</span>
+<span class="sd">        per-character/per-call.</span>
+<span class="sd">    retry:</span>
+<span class="sd">        Custom retry configuration.  Defaults to 3 retries with</span>
+<span class="sd">        exponential backoff.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AsyncArtifactsClient.__init__">
+<a class="viewcode-back" href="../../api/client.html#artifacts.AsyncArtifactsClient.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;https://api.artifactsmmo.com&quot;</span><span class="p">,</span>
+        <span class="n">auto_wait</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">retry</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RetryConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_http</span> <span class="o">=</span> <span class="n">HttpClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">retry</span><span class="o">=</span><span class="n">retry</span><span class="p">)</span>
+        <span class="c1"># Shared mutable reference so that ``client.auto_wait = False``</span>
+        <span class="c1"># propagates instantly to every Character/Domain created from this client.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_auto_wait_ref</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">auto_wait</span><span class="p">]</span>
+
+        <span class="c1"># -- Sub-accessors (game data &amp; account) --</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">ServerAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">TokenAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accounts</span> <span class="o">=</span> <span class="n">AccountsAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_account</span> <span class="o">=</span> <span class="n">MyAccountAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">characters</span> <span class="o">=</span> <span class="n">CharactersAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">achievements</span> <span class="o">=</span> <span class="n">AchievementsAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">badges</span> <span class="o">=</span> <span class="n">BadgesAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">effects</span> <span class="o">=</span> <span class="n">EffectsAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">EventsAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grand_exchange</span> <span class="o">=</span> <span class="n">GrandExchangeAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">ItemsAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">leaderboard</span> <span class="o">=</span> <span class="n">LeaderboardAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maps</span> <span class="o">=</span> <span class="n">MapsAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">monsters</span> <span class="o">=</span> <span class="n">MonstersAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">npcs</span> <span class="o">=</span> <span class="n">NPCsAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span> <span class="o">=</span> <span class="n">ResourcesAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="n">TasksAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simulation</span> <span class="o">=</span> <span class="n">SimulationAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sandbox</span> <span class="o">=</span> <span class="n">SandboxAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">)</span></div>
+
+
+    <span class="c1"># -- Global auto_wait toggle --</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">auto_wait</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether actions automatically sleep until their cooldown expires.</span>
+
+<span class="sd">        Setting this on the client affects **all** characters that were</span>
+<span class="sd">        created without an explicit per-character override::</span>
+
+<span class="sd">            client.auto_wait = False   # disable globally</span>
+<span class="sd">            client.auto_wait = True    # re-enable globally</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auto_wait_ref</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@auto_wait</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">auto_wait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_auto_wait_ref</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c1"># -- Character factory --</span>
+
+<div class="viewcode-block" id="AsyncArtifactsClient.character">
+<a class="viewcode-back" href="../../api/client.html#artifacts.AsyncArtifactsClient.character">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">character</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">auto_wait</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Character</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a :class:`Character` controller for *name*.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        auto_wait:</span>
+<span class="sd">            Override the client-level ``auto_wait`` setting for this</span>
+<span class="sd">            character.  If ``None`` (default), the character shares the</span>
+<span class="sd">            client reference and will reflect any future changes to</span>
+<span class="sd">            ``client.auto_wait`` automatically.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Per-character override: pass a plain bool (isolated copy).</span>
+        <span class="c1"># No override: pass the shared mutable list so the character</span>
+        <span class="c1"># tracks the client-level setting dynamically.</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="p">[</span><span class="n">auto_wait</span><span class="p">]</span> <span class="k">if</span> <span class="n">auto_wait</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auto_wait_ref</span>
+        <span class="k">return</span> <span class="n">Character</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">http</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="p">,</span> <span class="n">auto_wait</span><span class="o">=</span><span class="n">source</span><span class="p">)</span></div>
+
+
+    <span class="c1"># -- Context manager --</span>
+
+<div class="viewcode-block" id="AsyncArtifactsClient.start">
+<a class="viewcode-back" href="../../api/client.html#artifacts.AsyncArtifactsClient.start">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start the HTTP session (called automatically by ``__aenter__``).&quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AsyncArtifactsClient.close">
+<a class="viewcode-back" href="../../api/client.html#artifacts.AsyncArtifactsClient.close">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the HTTP session (called automatically by ``__aexit__``).&quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncArtifactsClient</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026, Artifacts Team.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

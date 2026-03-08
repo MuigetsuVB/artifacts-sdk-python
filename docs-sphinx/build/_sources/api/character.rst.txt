@@ -1,0 +1,191 @@
+Character
+=========
+
+The **Character** object is a controller for a specific character in your account.
+
+**Purpose:**
+
+- Control one character's actions
+- Direct access to movement and combat
+- Access to domain-organized features (bank, crafting, trading, etc.)
+
+**Create a Character controller:**
+
+.. code-block:: python
+
+   # From a client
+   client = ArtifactsClient(token="your_token")
+   char = client.character("MyCharacterName")
+
+Getting Your Character
+----------------------
+
+Each Character controller is tied to one character name:
+
+.. code-block:: python
+
+   from artifacts import ArtifactsClient
+   
+   with ArtifactsClient(token="your_token") as client:
+       # Create controllers for different characters
+       fighter = client.character("Fighter")
+       mage = client.character("Mage")
+       crafter = client.character("Crafter")
+       
+       # Each operates independently
+       fighter.move(x=0, y=1)
+       mage.move(x=2, y=3)
+
+Direct Actions
+--------------
+
+The Character provides **direct methods** for common actions:
+
+**Movement:**
+
+.. code-block:: python
+
+   # Move to coordinates
+   response = char.move(x=1, y=2)
+   
+   # Check new position
+   print(f"Now at: ({response.data.x}, {response.data.y})")
+
+**Combat:**
+
+.. code-block:: python
+
+   # Fight a monster at current location
+   result = char.fight()
+   print(f"Result: {result.fight.result}")
+   print(f"XP gained: {result.fight.xp}")
+
+**Rest & Recovery:**
+
+.. code-block:: python
+
+   # Rest to recover HP (must be at spawn point)
+   result = char.rest()
+   print(f"HP: {result.data.hp}/{result.data.max_hp}")
+
+**Get Character Data:**
+
+.. code-block:: python
+
+   # Get full character info
+   data = char.get()
+   
+   print(f"Name: {data.name}")
+   print(f"Level: {data.level}")
+   print(f"Position: ({data.x}, {data.y})")
+   print(f"HP: {data.hp}/{data.max_hp}")
+   
+   # Check inventory
+   for slot in data.inventory:
+       if slot.code:
+           print(f"  {slot.quantity}x {slot.code}")
+
+Domain Objects
+--------------
+
+For organized feature access, Character groups related methods:
+
+.. code-block:: python
+
+   char.bank       # Bank operations (deposit, withdraw)
+   char.equipment  # Equip/unequip items
+   char.skills     # Crafting, gathering, recycling
+   char.ge         # Grand Exchange trading
+   char.inventory  # Inventory management
+   char.tasks      # Quest management
+   char.trading    # Player-to-player trading
+
+These are just **attributes of the Character** that group related methods together.
+
+See :doc:`domains` for detailed documentation of each group.
+
+**Example using grouped methods:**
+
+.. code-block:: python
+
+   # Crafting (via char.skills)
+   char.skills.craft(code="iron_sword", quantity=1)
+   
+   # Banking (via char.bank)
+   char.bank.deposit_gold(quantity=100)
+   
+   # Trading (via char.ge)
+   char.ge.sell(code="copper_ore", quantity=10, price=50)
+
+Character Class Reference
+-------------------------
+
+.. autoclass:: artifacts.Character
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+Common Patterns
+---------------
+
+**Context Manager (Recommended):**
+
+.. code-block:: python
+
+   with ArtifactsClient(token="your_token") as client:
+       char = client.character("MyChar")
+       char.move(x=1, y=2)
+       # Automatic cleanup
+
+**Multiple Characters:**
+
+.. code-block:: python
+
+   with ArtifactsClient(token="your_token") as client:
+       gatherer = client.character("Gatherer")
+       crafter = client.character("Crafter")
+       
+       # Gatherer collects resources
+       gatherer.move(x=2, y=0)
+       gatherer.skills.gather()
+       
+       # Transfer via bank
+       gatherer.move(x=4, y=1)
+       gatherer.bank.deposit_items(items=[...])
+       
+       # Crafter picks up and crafts
+       crafter.move(x=4, y=1)
+       crafter.bank.withdraw_items(items=[...])
+       crafter.move(x=1, y=1)
+       crafter.skills.craft(code="iron_sword")
+
+**Async Multiple Characters:**
+
+.. code-block:: python
+
+   async def fight_loop(char, count):
+       for i in range(count):
+           result = await char.fight()
+           print(f"{char._name}: {result.fight.result}")
+           await asyncio.sleep(result.data.cooldown)
+   
+   async def main():
+       async with AsyncArtifactsClient(token="your_token") as client:
+           fighters = [
+               client.character("Fighter1"),
+               client.character("Fighter2"),
+               client.character("Fighter3")
+           ]
+           
+           # All fight in parallel
+           await asyncio.gather(*[fight_loop(f, 10) for f in fighters])
+   
+   asyncio.run(main())
+
+See Also
+--------
+
+- :doc:`client` - Creating clients and getting game data
+- :doc:`domains` - Feature-organized domain objects
+- :doc:`../examples/basic` - Basic usage examples

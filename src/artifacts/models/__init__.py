@@ -91,7 +91,7 @@ from .maps import (
     TransitionSchema,
 )
 from .monsters import DropRateSchema, MonsterSchema
-from .npcs import NPCItem, NPCSchema, NpcItemTransactionSchema
+from .npcs import NPCSchema, NpcItemTransactionSchema, SimpleNPCItem
 from .resources import ResourceSchema
 from .responses import (
     BankExtensionTransactionSchema,
@@ -215,7 +215,7 @@ __all__ = [
     "TransitionSchema",
     "DropRateSchema",
     "MonsterSchema",
-    "NPCItem",
+    "SimpleNPCItem",
     "NPCSchema",
     "NpcItemTransactionSchema",
     "ResourceSchema",

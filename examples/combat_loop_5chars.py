@@ -3,20 +3,19 @@
 Each character loops through:
 1. If HP < 40% -> rest
 2. Otherwise -> fight the monster on the current map
-3. Wait for cooldown
+3. Cooldowns are handled automatically by the SDK
 4. Repeat
 
 All 5 loops run in parallel using asyncio.gather().
+
+Note: No manual wait_for_cooldown() or try/except CooldownActiveError
+needed -- the SDK handles both via auto_wait and retry.
 """
 
 import asyncio
 
-from artifacts import ArtifactsClient, wait_for_cooldown
-from artifacts.errors import (
-    CooldownActiveError,
-    ActionInProgressError,
-    ContentNotOnMapError,
-)
+from artifacts import AsyncArtifactsClient
+from artifacts.errors import ContentNotOnMapError
 
 # Replace with your token
 TOKEN = "your_token_here"
@@ -51,16 +50,10 @@ async def combat_loop(char, max_fights: int = MAX_FIGHTS):
     info = await char.get()
     print(f"[{name}] Starting lv{info.level} HP={info.hp}/{info.max_hp} pos=({info.x},{info.y})")
 
-    # Move to the fight spot if needed
+    # Move to the fight spot if needed (auto-waits cooldown)
     if info.x != FIGHT_X or info.y != FIGHT_Y:
         print(f"[{name}] Moving to ({FIGHT_X},{FIGHT_Y})...")
-        try:
-            move_result = await char.move(x=FIGHT_X, y=FIGHT_Y)
-            await wait_for_cooldown(move_result.cooldown)
-        except CooldownActiveError:
-            await asyncio.sleep(3)
-            move_result = await char.move(x=FIGHT_X, y=FIGHT_Y)
-            await wait_for_cooldown(move_result.cooldown)
+        await char.move(x=FIGHT_X, y=FIGHT_Y)
 
     while True:
         # Check fight limit
@@ -71,27 +64,16 @@ async def combat_loop(char, max_fights: int = MAX_FIGHTS):
         # Fetch current HP
         info = await char.get()
 
-        # Rest if HP is low
+        # Rest if HP is low (auto-waits cooldown)
         if info.hp < info.max_hp * REST_THRESHOLD:
             print(f"[{name}] Low HP ({info.hp}/{info.max_hp}), resting...")
-            try:
-                rest_result = await char.rest()
-                print(f"[{name}] +{rest_result.hp_restored} HP")
-                await wait_for_cooldown(rest_result.cooldown)
-            except CooldownActiveError:
-                await asyncio.sleep(3)
+            rest_result = await char.rest()
+            print(f"[{name}] +{rest_result.hp_restored} HP")
             continue
 
-        # Fight
+        # Fight (auto-waits cooldown, auto-retries on cooldown error)
         try:
             result = await char.fight()
-        except CooldownActiveError:
-            # Still in cooldown, wait a bit
-            await asyncio.sleep(2)
-            continue
-        except ActionInProgressError:
-            await asyncio.sleep(2)
-            continue
         except ContentNotOnMapError:
             print(f"[{name}] No monster here, stopping.")
             break
@@ -115,16 +97,13 @@ async def combat_loop(char, max_fights: int = MAX_FIGHTS):
             )
             print(f"[{name}]   Drops: {drops_str}")
 
-        # Wait for cooldown before next fight
-        await wait_for_cooldown(result.cooldown)
-
     # Final summary
     final = await char.get()
     print(f"[{name}] Done! lv{final.level} HP={final.hp}/{final.max_hp} gold={final.gold}")
 
 
 async def main():
-    async with ArtifactsClient(token=TOKEN) as client:
+    async with AsyncArtifactsClient(token=TOKEN) as client:
         print("=== Artifacts MMO -- Combat Loop (5 characters) ===\n")
 
         # Verify characters exist

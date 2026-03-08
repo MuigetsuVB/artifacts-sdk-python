@@ -1,10 +1,17 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import BaseModel
 
 from .enums import NPCType
+
+
+class SimpleNPCItem(BaseModel):
+    code: str
+    currency: str
+    buy_price: Optional[int] = None
+    sell_price: Optional[int] = None
 
 
 class NPCSchema(BaseModel):
@@ -12,14 +19,7 @@ class NPCSchema(BaseModel):
     code: str
     description: Optional[str] = None
     type: NPCType
-
-
-class NPCItem(BaseModel):
-    code: str
-    npc: str
-    currency: Optional[str] = None
-    buy_price: Optional[int] = None
-    sell_price: Optional[int] = None
+    items: List[SimpleNPCItem] = []
 
 
 class NpcItemTransactionSchema(BaseModel):

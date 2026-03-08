@@ -27,7 +27,7 @@ class MyAccountDetails(BaseModel):
     badges: list[str]
     skins: list[CharacterSkin]
     gems: int
-    event_tokens: int
+    event_token: int
     achievements_points: int
     banned: bool
     ban_reason: Optional[str] = None

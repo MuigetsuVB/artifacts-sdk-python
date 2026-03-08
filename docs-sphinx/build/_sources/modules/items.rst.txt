@@ -1,0 +1,9 @@
+Items
+=====
+
+API for managing items.
+
+.. automodule:: artifacts.api.items
+   :members:
+   :undoc-members:
+   :show-inheritance:

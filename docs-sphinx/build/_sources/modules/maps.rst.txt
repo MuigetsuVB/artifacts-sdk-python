@@ -1,0 +1,9 @@
+Maps
+====
+
+API for navigation and maps.
+
+.. automodule:: artifacts.api.maps
+   :members:
+   :undoc-members:
+   :show-inheritance:

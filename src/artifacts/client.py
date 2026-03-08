@@ -1,11 +1,11 @@
-"""Main client entry point for the Artifacts MMO API wrapper."""
+"""Main client entry point for the Artifacts MMO SDK."""
 
 from __future__ import annotations
 
 from typing import Optional
 
 from .character import Character
-from .http import HttpClient
+from .http import HttpClient, RetryConfig
 from .api.accounts import AccountsAPI
 from .api.achievements import AchievementsAPI
 from .api.badges import BadgesAPI
@@ -27,14 +27,15 @@ from .api.tasks import TasksAPI
 from .api.token import TokenAPI
 
 
-class ArtifactsClient:
-    """Async client for the Artifacts MMO API.
+class AsyncArtifactsClient:
+    """Async SDK client for the Artifacts MMO API.
 
     Use as an async context manager::
 
-        async with ArtifactsClient(token="your_token") as client:
+        async with AsyncArtifactsClient(token="your_token") as client:
             char = client.character("MyChar")
-            result = await char.fight()
+            await char.move(x=0, y=1)    # auto-waits cooldown
+            await char.fight()            # auto-waits cooldown
 
     Parameters
     ----------
@@ -44,6 +45,13 @@ class ArtifactsClient:
         existing token.
     base_url:
         API base URL.  Defaults to the production server.
+    auto_wait:
+        If ``True`` (default), every action automatically sleeps
+        until its cooldown expires.  Disable globally here or
+        per-character/per-call.
+    retry:
+        Custom retry configuration.  Defaults to 3 retries with
+        exponential backoff.
     """
 
     def __init__(
@@ -51,8 +59,13 @@ class ArtifactsClient:
         token: Optional[str] = None,
         *,
         base_url: str = "https://api.artifactsmmo.com",
+        auto_wait: bool = True,
+        retry: Optional[RetryConfig] = None,
     ):
-        self._http = HttpClient(base_url=base_url, token=token)
+        self._http = HttpClient(base_url=base_url, token=token, retry=retry)
+        # Shared mutable reference so that ``client.auto_wait = False``
+        # propagates instantly to every Character/Domain created from this client.
+        self._auto_wait_ref: list = [auto_wait]
 
         # -- Sub-accessors (game data & account) --
         self.server = ServerAPI(self._http)
@@ -75,11 +88,42 @@ class ArtifactsClient:
         self.simulation = SimulationAPI(self._http)
         self.sandbox = SandboxAPI(self._http)
 
+    # -- Global auto_wait toggle --
+
+    @property
+    def auto_wait(self) -> bool:
+        """Whether actions automatically sleep until their cooldown expires.
+
+        Setting this on the client affects **all** characters that were
+        created without an explicit per-character override::
+
+            client.auto_wait = False   # disable globally
+            client.auto_wait = True    # re-enable globally
+        """
+        return self._auto_wait_ref[0]
+
+    @auto_wait.setter
+    def auto_wait(self, value: bool) -> None:
+        self._auto_wait_ref[0] = value
+
     # -- Character factory --
 
-    def character(self, name: str) -> Character:
-        """Return a :class:`Character` controller for *name*."""
-        return Character(name=name, http=self._http)
+    def character(self, name: str, *, auto_wait: Optional[bool] = None) -> Character:
+        """Return a :class:`Character` controller for *name*.
+
+        Parameters
+        ----------
+        auto_wait:
+            Override the client-level ``auto_wait`` setting for this
+            character.  If ``None`` (default), the character shares the
+            client reference and will reflect any future changes to
+            ``client.auto_wait`` automatically.
+        """
+        # Per-character override: pass a plain bool (isolated copy).
+        # No override: pass the shared mutable list so the character
+        # tracks the client-level setting dynamically.
+        source = [auto_wait] if auto_wait is not None else self._auto_wait_ref
+        return Character(name=name, http=self._http, auto_wait=source)
 
     # -- Context manager --
 
@@ -91,7 +135,7 @@ class ArtifactsClient:
         """Close the HTTP session (called automatically by ``__aexit__``)."""
         await self._http.close()
 
-    async def __aenter__(self) -> ArtifactsClient:
+    async def __aenter__(self) -> AsyncArtifactsClient:
         await self.start()
         return self
 

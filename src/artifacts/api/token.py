@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-import aiohttp
-
 if TYPE_CHECKING:
     from ..http import HttpClient
 
@@ -19,6 +17,5 @@ class TokenAPI:
 
         Returns the token string.
         """
-        auth = aiohttp.BasicAuth(username, password)
-        data = await self._http.post("/token", auth=auth)
+        data = await self._http.post("/token", auth=(username, password))
         return data["token"]

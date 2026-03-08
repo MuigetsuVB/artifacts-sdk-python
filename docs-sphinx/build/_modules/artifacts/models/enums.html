@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>artifacts.models.enums &mdash; Documentation Artifacts MMO Python Wrapper 0.2.1</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=bf78f4d7"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=e6b791cb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Artifacts MMO Python Wrapper
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide de l'API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/models.html">Modèles de données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/domains.html">Domaines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/errors.html">Erreurs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/characters.html">Personnages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/items.html">Objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/maps.html">Cartes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/monsters.html">Monstres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/resources.html">Ressources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/grand_exchange.html">Grand Exchange</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/tasks.html">Tâches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/events.html">Événements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Artifacts MMO Python Wrapper</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">artifacts.models.enums</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de artifacts.models.enums</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+
+
+<div class="viewcode-block" id="AccountStatus">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.AccountStatus">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AccountStatus</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;standard&quot;</span>
+    <span class="n">FOUNDER</span> <span class="o">=</span> <span class="s2">&quot;founder&quot;</span>
+    <span class="n">GOLD_FOUNDER</span> <span class="o">=</span> <span class="s2">&quot;gold_founder&quot;</span>
+    <span class="n">VIP_FOUNDER</span> <span class="o">=</span> <span class="s2">&quot;vip_founder&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="AccountLeaderboardType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.AccountLeaderboardType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AccountLeaderboardType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">ACHIEVEMENTS_POINTS</span> <span class="o">=</span> <span class="s2">&quot;achievements_points&quot;</span>
+    <span class="n">GOLD</span> <span class="o">=</span> <span class="s2">&quot;gold&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="AchievementType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.AchievementType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AchievementType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">COMBAT_KILL</span> <span class="o">=</span> <span class="s2">&quot;combat_kill&quot;</span>
+    <span class="n">COMBAT_DROP</span> <span class="o">=</span> <span class="s2">&quot;combat_drop&quot;</span>
+    <span class="n">COMBAT_LEVEL</span> <span class="o">=</span> <span class="s2">&quot;combat_level&quot;</span>
+    <span class="n">GATHERING</span> <span class="o">=</span> <span class="s2">&quot;gathering&quot;</span>
+    <span class="n">CRAFTING</span> <span class="o">=</span> <span class="s2">&quot;crafting&quot;</span>
+    <span class="n">RECYCLING</span> <span class="o">=</span> <span class="s2">&quot;recycling&quot;</span>
+    <span class="n">TASK</span> <span class="o">=</span> <span class="s2">&quot;task&quot;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s2">&quot;other&quot;</span>
+    <span class="n">USE</span> <span class="o">=</span> <span class="s2">&quot;use&quot;</span>
+    <span class="n">NPC_BUY</span> <span class="o">=</span> <span class="s2">&quot;npc_buy&quot;</span>
+    <span class="n">NPC_SELL</span> <span class="o">=</span> <span class="s2">&quot;npc_sell&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ActionType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.ActionType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ActionType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">MOVEMENT</span> <span class="o">=</span> <span class="s2">&quot;movement&quot;</span>
+    <span class="n">FIGHT</span> <span class="o">=</span> <span class="s2">&quot;fight&quot;</span>
+    <span class="n">MULTI_FIGHT</span> <span class="o">=</span> <span class="s2">&quot;multi_fight&quot;</span>
+    <span class="n">CRAFTING</span> <span class="o">=</span> <span class="s2">&quot;crafting&quot;</span>
+    <span class="n">GATHERING</span> <span class="o">=</span> <span class="s2">&quot;gathering&quot;</span>
+    <span class="n">BUY_GE</span> <span class="o">=</span> <span class="s2">&quot;buy_ge&quot;</span>
+    <span class="n">SELL_GE</span> <span class="o">=</span> <span class="s2">&quot;sell_ge&quot;</span>
+    <span class="n">CREATE_BUY_ORDER_GE</span> <span class="o">=</span> <span class="s2">&quot;create_buy_order_ge&quot;</span>
+    <span class="n">FILL_BUY_ORDER_GE</span> <span class="o">=</span> <span class="s2">&quot;fill_buy_order_ge&quot;</span>
+    <span class="n">BUY_NPC</span> <span class="o">=</span> <span class="s2">&quot;buy_npc&quot;</span>
+    <span class="n">SELL_NPC</span> <span class="o">=</span> <span class="s2">&quot;sell_npc&quot;</span>
+    <span class="n">CANCEL_GE</span> <span class="o">=</span> <span class="s2">&quot;cancel_ge&quot;</span>
+    <span class="n">DELETE_ITEM</span> <span class="o">=</span> <span class="s2">&quot;delete_item&quot;</span>
+    <span class="n">DEPOSIT_ITEM</span> <span class="o">=</span> <span class="s2">&quot;deposit_item&quot;</span>
+    <span class="n">WITHDRAW_ITEM</span> <span class="o">=</span> <span class="s2">&quot;withdraw_item&quot;</span>
+    <span class="n">DEPOSIT_GOLD</span> <span class="o">=</span> <span class="s2">&quot;deposit_gold&quot;</span>
+    <span class="n">WITHDRAW_GOLD</span> <span class="o">=</span> <span class="s2">&quot;withdraw_gold&quot;</span>
+    <span class="n">EQUIP</span> <span class="o">=</span> <span class="s2">&quot;equip&quot;</span>
+    <span class="n">UNEQUIP</span> <span class="o">=</span> <span class="s2">&quot;unequip&quot;</span>
+    <span class="n">TASK</span> <span class="o">=</span> <span class="s2">&quot;task&quot;</span>
+    <span class="n">RECYCLING</span> <span class="o">=</span> <span class="s2">&quot;recycling&quot;</span>
+    <span class="n">REST</span> <span class="o">=</span> <span class="s2">&quot;rest&quot;</span>
+    <span class="n">USE</span> <span class="o">=</span> <span class="s2">&quot;use&quot;</span>
+    <span class="n">BUY_BANK_EXPANSION</span> <span class="o">=</span> <span class="s2">&quot;buy_bank_expansion&quot;</span>
+    <span class="n">GIVE_ITEM</span> <span class="o">=</span> <span class="s2">&quot;give_item&quot;</span>
+    <span class="n">GIVE_GOLD</span> <span class="o">=</span> <span class="s2">&quot;give_gold&quot;</span>
+    <span class="n">CHANGE_SKIN</span> <span class="o">=</span> <span class="s2">&quot;change_skin&quot;</span>
+    <span class="n">RENAME</span> <span class="o">=</span> <span class="s2">&quot;rename&quot;</span>
+    <span class="n">TRANSITION</span> <span class="o">=</span> <span class="s2">&quot;transition&quot;</span>
+    <span class="n">CLAIM_ITEM</span> <span class="o">=</span> <span class="s2">&quot;claim_item&quot;</span>
+    <span class="n">SANDBOX_GIVE_GOLD</span> <span class="o">=</span> <span class="s2">&quot;sandbox_give_gold&quot;</span>
+    <span class="n">SANDBOX_GIVE_ITEM</span> <span class="o">=</span> <span class="s2">&quot;sandbox_give_item&quot;</span>
+    <span class="n">SANDBOX_GIVE_XP</span> <span class="o">=</span> <span class="s2">&quot;sandbox_give_xp&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="CharacterLeaderboardType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.CharacterLeaderboardType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CharacterLeaderboardType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">COMBAT</span> <span class="o">=</span> <span class="s2">&quot;combat&quot;</span>
+    <span class="n">WOODCUTTING</span> <span class="o">=</span> <span class="s2">&quot;woodcutting&quot;</span>
+    <span class="n">MINING</span> <span class="o">=</span> <span class="s2">&quot;mining&quot;</span>
+    <span class="n">FISHING</span> <span class="o">=</span> <span class="s2">&quot;fishing&quot;</span>
+    <span class="n">WEAPONCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;weaponcrafting&quot;</span>
+    <span class="n">GEARCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;gearcrafting&quot;</span>
+    <span class="n">JEWELRYCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;jewelrycrafting&quot;</span>
+    <span class="n">COOKING</span> <span class="o">=</span> <span class="s2">&quot;cooking&quot;</span>
+    <span class="n">ALCHEMY</span> <span class="o">=</span> <span class="s2">&quot;alchemy&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="CharacterSkin">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.CharacterSkin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CharacterSkin</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">MEN1</span> <span class="o">=</span> <span class="s2">&quot;men1&quot;</span>
+    <span class="n">MEN2</span> <span class="o">=</span> <span class="s2">&quot;men2&quot;</span>
+    <span class="n">MEN3</span> <span class="o">=</span> <span class="s2">&quot;men3&quot;</span>
+    <span class="n">WOMEN1</span> <span class="o">=</span> <span class="s2">&quot;women1&quot;</span>
+    <span class="n">WOMEN2</span> <span class="o">=</span> <span class="s2">&quot;women2&quot;</span>
+    <span class="n">WOMEN3</span> <span class="o">=</span> <span class="s2">&quot;women3&quot;</span>
+    <span class="n">CORRUPTED1</span> <span class="o">=</span> <span class="s2">&quot;corrupted1&quot;</span>
+    <span class="n">ZOMBIE1</span> <span class="o">=</span> <span class="s2">&quot;zombie1&quot;</span>
+    <span class="n">MARAUDER1</span> <span class="o">=</span> <span class="s2">&quot;marauder1&quot;</span>
+    <span class="n">GOBLIN1</span> <span class="o">=</span> <span class="s2">&quot;goblin1&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ConditionOperator">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.ConditionOperator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConditionOperator</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">EQ</span> <span class="o">=</span> <span class="s2">&quot;eq&quot;</span>
+    <span class="n">NE</span> <span class="o">=</span> <span class="s2">&quot;ne&quot;</span>
+    <span class="n">GT</span> <span class="o">=</span> <span class="s2">&quot;gt&quot;</span>
+    <span class="n">LT</span> <span class="o">=</span> <span class="s2">&quot;lt&quot;</span>
+    <span class="n">COST</span> <span class="o">=</span> <span class="s2">&quot;cost&quot;</span>
+    <span class="n">HAS_ITEM</span> <span class="o">=</span> <span class="s2">&quot;has_item&quot;</span>
+    <span class="n">ACHIEVEMENT_UNLOCKED</span> <span class="o">=</span> <span class="s2">&quot;achievement_unlocked&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="CraftSkill">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.CraftSkill">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CraftSkill</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">WEAPONCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;weaponcrafting&quot;</span>
+    <span class="n">GEARCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;gearcrafting&quot;</span>
+    <span class="n">JEWELRYCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;jewelrycrafting&quot;</span>
+    <span class="n">COOKING</span> <span class="o">=</span> <span class="s2">&quot;cooking&quot;</span>
+    <span class="n">WOODCUTTING</span> <span class="o">=</span> <span class="s2">&quot;woodcutting&quot;</span>
+    <span class="n">MINING</span> <span class="o">=</span> <span class="s2">&quot;mining&quot;</span>
+    <span class="n">ALCHEMY</span> <span class="o">=</span> <span class="s2">&quot;alchemy&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="EffectSubtype">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.EffectSubtype">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EffectSubtype</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">STAT</span> <span class="o">=</span> <span class="s2">&quot;stat&quot;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s2">&quot;other&quot;</span>
+    <span class="n">HEAL</span> <span class="o">=</span> <span class="s2">&quot;heal&quot;</span>
+    <span class="n">BUFF</span> <span class="o">=</span> <span class="s2">&quot;buff&quot;</span>
+    <span class="n">DEBUFF</span> <span class="o">=</span> <span class="s2">&quot;debuff&quot;</span>
+    <span class="n">SPECIAL</span> <span class="o">=</span> <span class="s2">&quot;special&quot;</span>
+    <span class="n">GATHERING</span> <span class="o">=</span> <span class="s2">&quot;gathering&quot;</span>
+    <span class="n">TELEPORT</span> <span class="o">=</span> <span class="s2">&quot;teleport&quot;</span>
+    <span class="n">GOLD</span> <span class="o">=</span> <span class="s2">&quot;gold&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="EffectType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.EffectType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EffectType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">EQUIPMENT</span> <span class="o">=</span> <span class="s2">&quot;equipment&quot;</span>
+    <span class="n">CONSUMABLE</span> <span class="o">=</span> <span class="s2">&quot;consumable&quot;</span>
+    <span class="n">COMBAT</span> <span class="o">=</span> <span class="s2">&quot;combat&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="FightResult">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.FightResult">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FightResult</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">WIN</span> <span class="o">=</span> <span class="s2">&quot;win&quot;</span>
+    <span class="n">LOSS</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="GatheringSkill">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.GatheringSkill">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GatheringSkill</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">MINING</span> <span class="o">=</span> <span class="s2">&quot;mining&quot;</span>
+    <span class="n">WOODCUTTING</span> <span class="o">=</span> <span class="s2">&quot;woodcutting&quot;</span>
+    <span class="n">FISHING</span> <span class="o">=</span> <span class="s2">&quot;fishing&quot;</span>
+    <span class="n">ALCHEMY</span> <span class="o">=</span> <span class="s2">&quot;alchemy&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="GEOrderType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.GEOrderType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GEOrderType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">SELL</span> <span class="o">=</span> <span class="s2">&quot;sell&quot;</span>
+    <span class="n">BUY</span> <span class="o">=</span> <span class="s2">&quot;buy&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ItemSlot">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.ItemSlot">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ItemSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">WEAPON</span> <span class="o">=</span> <span class="s2">&quot;weapon&quot;</span>
+    <span class="n">SHIELD</span> <span class="o">=</span> <span class="s2">&quot;shield&quot;</span>
+    <span class="n">HELMET</span> <span class="o">=</span> <span class="s2">&quot;helmet&quot;</span>
+    <span class="n">BODY_ARMOR</span> <span class="o">=</span> <span class="s2">&quot;body_armor&quot;</span>
+    <span class="n">LEG_ARMOR</span> <span class="o">=</span> <span class="s2">&quot;leg_armor&quot;</span>
+    <span class="n">BOOTS</span> <span class="o">=</span> <span class="s2">&quot;boots&quot;</span>
+    <span class="n">RING1</span> <span class="o">=</span> <span class="s2">&quot;ring1&quot;</span>
+    <span class="n">RING2</span> <span class="o">=</span> <span class="s2">&quot;ring2&quot;</span>
+    <span class="n">AMULET</span> <span class="o">=</span> <span class="s2">&quot;amulet&quot;</span>
+    <span class="n">ARTIFACT1</span> <span class="o">=</span> <span class="s2">&quot;artifact1&quot;</span>
+    <span class="n">ARTIFACT2</span> <span class="o">=</span> <span class="s2">&quot;artifact2&quot;</span>
+    <span class="n">ARTIFACT3</span> <span class="o">=</span> <span class="s2">&quot;artifact3&quot;</span>
+    <span class="n">UTILITY1</span> <span class="o">=</span> <span class="s2">&quot;utility1&quot;</span>
+    <span class="n">UTILITY2</span> <span class="o">=</span> <span class="s2">&quot;utility2&quot;</span>
+    <span class="n">BAG</span> <span class="o">=</span> <span class="s2">&quot;bag&quot;</span>
+    <span class="n">RUNE</span> <span class="o">=</span> <span class="s2">&quot;rune&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ItemType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.ItemType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ItemType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">UTILITY</span> <span class="o">=</span> <span class="s2">&quot;utility&quot;</span>
+    <span class="n">BODY_ARMOR</span> <span class="o">=</span> <span class="s2">&quot;body_armor&quot;</span>
+    <span class="n">WEAPON</span> <span class="o">=</span> <span class="s2">&quot;weapon&quot;</span>
+    <span class="n">RESOURCE</span> <span class="o">=</span> <span class="s2">&quot;resource&quot;</span>
+    <span class="n">LEG_ARMOR</span> <span class="o">=</span> <span class="s2">&quot;leg_armor&quot;</span>
+    <span class="n">HELMET</span> <span class="o">=</span> <span class="s2">&quot;helmet&quot;</span>
+    <span class="n">BOOTS</span> <span class="o">=</span> <span class="s2">&quot;boots&quot;</span>
+    <span class="n">SHIELD</span> <span class="o">=</span> <span class="s2">&quot;shield&quot;</span>
+    <span class="n">AMULET</span> <span class="o">=</span> <span class="s2">&quot;amulet&quot;</span>
+    <span class="n">RING</span> <span class="o">=</span> <span class="s2">&quot;ring&quot;</span>
+    <span class="n">ARTIFACT</span> <span class="o">=</span> <span class="s2">&quot;artifact&quot;</span>
+    <span class="n">CURRENCY</span> <span class="o">=</span> <span class="s2">&quot;currency&quot;</span>
+    <span class="n">CONSUMABLE</span> <span class="o">=</span> <span class="s2">&quot;consumable&quot;</span>
+    <span class="n">RUNE</span> <span class="o">=</span> <span class="s2">&quot;rune&quot;</span>
+    <span class="n">BAG</span> <span class="o">=</span> <span class="s2">&quot;bag&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="LogType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.LogType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LogType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">SPAWN</span> <span class="o">=</span> <span class="s2">&quot;spawn&quot;</span>
+    <span class="n">DELETE_CHARACTER</span> <span class="o">=</span> <span class="s2">&quot;delete_character&quot;</span>
+    <span class="n">MOVEMENT</span> <span class="o">=</span> <span class="s2">&quot;movement&quot;</span>
+    <span class="n">FIGHT</span> <span class="o">=</span> <span class="s2">&quot;fight&quot;</span>
+    <span class="n">MULTI_FIGHT</span> <span class="o">=</span> <span class="s2">&quot;multi_fight&quot;</span>
+    <span class="n">CRAFTING</span> <span class="o">=</span> <span class="s2">&quot;crafting&quot;</span>
+    <span class="n">GATHERING</span> <span class="o">=</span> <span class="s2">&quot;gathering&quot;</span>
+    <span class="n">BUY_GE</span> <span class="o">=</span> <span class="s2">&quot;buy_ge&quot;</span>
+    <span class="n">SELL_GE</span> <span class="o">=</span> <span class="s2">&quot;sell_ge&quot;</span>
+    <span class="n">CREATE_BUY_ORDER_GE</span> <span class="o">=</span> <span class="s2">&quot;create_buy_order_ge&quot;</span>
+    <span class="n">FILL_BUY_ORDER_GE</span> <span class="o">=</span> <span class="s2">&quot;fill_buy_order_ge&quot;</span>
+    <span class="n">BUY_NPC</span> <span class="o">=</span> <span class="s2">&quot;buy_npc&quot;</span>
+    <span class="n">SELL_NPC</span> <span class="o">=</span> <span class="s2">&quot;sell_npc&quot;</span>
+    <span class="n">CANCEL_GE</span> <span class="o">=</span> <span class="s2">&quot;cancel_ge&quot;</span>
+    <span class="n">DELETE_ITEM</span> <span class="o">=</span> <span class="s2">&quot;delete_item&quot;</span>
+    <span class="n">DEPOSIT_ITEM</span> <span class="o">=</span> <span class="s2">&quot;deposit_item&quot;</span>
+    <span class="n">WITHDRAW_ITEM</span> <span class="o">=</span> <span class="s2">&quot;withdraw_item&quot;</span>
+    <span class="n">DEPOSIT_GOLD</span> <span class="o">=</span> <span class="s2">&quot;deposit_gold&quot;</span>
+    <span class="n">WITHDRAW_GOLD</span> <span class="o">=</span> <span class="s2">&quot;withdraw_gold&quot;</span>
+    <span class="n">EQUIP</span> <span class="o">=</span> <span class="s2">&quot;equip&quot;</span>
+    <span class="n">UNEQUIP</span> <span class="o">=</span> <span class="s2">&quot;unequip&quot;</span>
+    <span class="n">NEW_TASK</span> <span class="o">=</span> <span class="s2">&quot;new_task&quot;</span>
+    <span class="n">TASK_EXCHANGE</span> <span class="o">=</span> <span class="s2">&quot;task_exchange&quot;</span>
+    <span class="n">TASK_CANCELLED</span> <span class="o">=</span> <span class="s2">&quot;task_cancelled&quot;</span>
+    <span class="n">TASK_COMPLETED</span> <span class="o">=</span> <span class="s2">&quot;task_completed&quot;</span>
+    <span class="n">TASK_TRADE</span> <span class="o">=</span> <span class="s2">&quot;task_trade&quot;</span>
+    <span class="n">RECYCLING</span> <span class="o">=</span> <span class="s2">&quot;recycling&quot;</span>
+    <span class="n">REST</span> <span class="o">=</span> <span class="s2">&quot;rest&quot;</span>
+    <span class="n">USE</span> <span class="o">=</span> <span class="s2">&quot;use&quot;</span>
+    <span class="n">BUY_BANK_EXPANSION</span> <span class="o">=</span> <span class="s2">&quot;buy_bank_expansion&quot;</span>
+    <span class="n">ACHIEVEMENT</span> <span class="o">=</span> <span class="s2">&quot;achievement&quot;</span>
+    <span class="n">GIVE_ITEM</span> <span class="o">=</span> <span class="s2">&quot;give_item&quot;</span>
+    <span class="n">GIVE_GOLD</span> <span class="o">=</span> <span class="s2">&quot;give_gold&quot;</span>
+    <span class="n">RECEIVE_ITEM</span> <span class="o">=</span> <span class="s2">&quot;receive_item&quot;</span>
+    <span class="n">RECEIVE_GOLD</span> <span class="o">=</span> <span class="s2">&quot;receive_gold&quot;</span>
+    <span class="n">CHANGE_SKIN</span> <span class="o">=</span> <span class="s2">&quot;change_skin&quot;</span>
+    <span class="n">RENAME</span> <span class="o">=</span> <span class="s2">&quot;rename&quot;</span>
+    <span class="n">TRANSITION</span> <span class="o">=</span> <span class="s2">&quot;transition&quot;</span>
+    <span class="n">CLAIM_ITEM</span> <span class="o">=</span> <span class="s2">&quot;claim_item&quot;</span>
+    <span class="n">SANDBOX_GIVE_GOLD</span> <span class="o">=</span> <span class="s2">&quot;sandbox_give_gold&quot;</span>
+    <span class="n">SANDBOX_GIVE_ITEM</span> <span class="o">=</span> <span class="s2">&quot;sandbox_give_item&quot;</span>
+    <span class="n">SANDBOX_GIVE_XP</span> <span class="o">=</span> <span class="s2">&quot;sandbox_give_xp&quot;</span>
+    <span class="n">SANDBOX_RESET_ACCOUNT</span> <span class="o">=</span> <span class="s2">&quot;sandbox_reset_account&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="MapAccessType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.MapAccessType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MapAccessType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;standard&quot;</span>
+    <span class="n">TELEPORTATION</span> <span class="o">=</span> <span class="s2">&quot;teleportation&quot;</span>
+    <span class="n">CONDITIONAL</span> <span class="o">=</span> <span class="s2">&quot;conditional&quot;</span>
+    <span class="n">BLOCKED</span> <span class="o">=</span> <span class="s2">&quot;blocked&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="MapContentType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.MapContentType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MapContentType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">MONSTER</span> <span class="o">=</span> <span class="s2">&quot;monster&quot;</span>
+    <span class="n">RESOURCE</span> <span class="o">=</span> <span class="s2">&quot;resource&quot;</span>
+    <span class="n">WORKSHOP</span> <span class="o">=</span> <span class="s2">&quot;workshop&quot;</span>
+    <span class="n">BANK</span> <span class="o">=</span> <span class="s2">&quot;bank&quot;</span>
+    <span class="n">GRAND_EXCHANGE</span> <span class="o">=</span> <span class="s2">&quot;grand_exchange&quot;</span>
+    <span class="n">TASKS_MASTER</span> <span class="o">=</span> <span class="s2">&quot;tasks_master&quot;</span>
+    <span class="n">NPC</span> <span class="o">=</span> <span class="s2">&quot;npc&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="MapLayer">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.MapLayer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MapLayer</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">INTERIOR</span> <span class="o">=</span> <span class="s2">&quot;interior&quot;</span>
+    <span class="n">OVERWORLD</span> <span class="o">=</span> <span class="s2">&quot;overworld&quot;</span>
+    <span class="n">UNDERGROUND</span> <span class="o">=</span> <span class="s2">&quot;underground&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="MonsterType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.MonsterType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MonsterType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
+    <span class="n">ELITE</span> <span class="o">=</span> <span class="s2">&quot;elite&quot;</span>
+    <span class="n">BOSS</span> <span class="o">=</span> <span class="s2">&quot;boss&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="NPCType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.NPCType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NPCType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">MERCHANT</span> <span class="o">=</span> <span class="s2">&quot;merchant&quot;</span>
+    <span class="n">TRADER</span> <span class="o">=</span> <span class="s2">&quot;trader&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="PendingItemSource">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.PendingItemSource">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PendingItemSource</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">ACHIEVEMENT</span> <span class="o">=</span> <span class="s2">&quot;achievement&quot;</span>
+    <span class="n">GRAND_EXCHANGE</span> <span class="o">=</span> <span class="s2">&quot;grand_exchange&quot;</span>
+    <span class="n">ADMIN</span> <span class="o">=</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="n">EVENT</span> <span class="o">=</span> <span class="s2">&quot;event&quot;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s2">&quot;other&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Skill">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.Skill">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Skill</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">WEAPONCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;weaponcrafting&quot;</span>
+    <span class="n">GEARCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;gearcrafting&quot;</span>
+    <span class="n">JEWELRYCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;jewelrycrafting&quot;</span>
+    <span class="n">COOKING</span> <span class="o">=</span> <span class="s2">&quot;cooking&quot;</span>
+    <span class="n">WOODCUTTING</span> <span class="o">=</span> <span class="s2">&quot;woodcutting&quot;</span>
+    <span class="n">MINING</span> <span class="o">=</span> <span class="s2">&quot;mining&quot;</span>
+    <span class="n">ALCHEMY</span> <span class="o">=</span> <span class="s2">&quot;alchemy&quot;</span>
+    <span class="n">FISHING</span> <span class="o">=</span> <span class="s2">&quot;fishing&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="TaskType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.TaskType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">MONSTERS</span> <span class="o">=</span> <span class="s2">&quot;monsters&quot;</span>
+    <span class="n">ITEMS</span> <span class="o">=</span> <span class="s2">&quot;items&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="XPType">
+<a class="viewcode-back" href="../../../api/models.html#artifacts.models.enums.XPType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">XPType</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">COMBAT</span> <span class="o">=</span> <span class="s2">&quot;combat&quot;</span>
+    <span class="n">WEAPONCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;weaponcrafting&quot;</span>
+    <span class="n">GEARCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;gearcrafting&quot;</span>
+    <span class="n">JEWELRYCRAFTING</span> <span class="o">=</span> <span class="s2">&quot;jewelrycrafting&quot;</span>
+    <span class="n">COOKING</span> <span class="o">=</span> <span class="s2">&quot;cooking&quot;</span>
+    <span class="n">WOODCUTTING</span> <span class="o">=</span> <span class="s2">&quot;woodcutting&quot;</span>
+    <span class="n">MINING</span> <span class="o">=</span> <span class="s2">&quot;mining&quot;</span>
+    <span class="n">ALCHEMY</span> <span class="o">=</span> <span class="s2">&quot;alchemy&quot;</span>
+    <span class="n">FISHING</span> <span class="o">=</span> <span class="s2">&quot;fishing&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026, Artifacts Team.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

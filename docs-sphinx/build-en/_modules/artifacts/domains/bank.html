@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>artifacts.domains.bank &#8212; Artifacts MMO SDK 0.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=6403b91c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=2bd64d3a" />
+    <script src="../../../_static/documentation_options.js?v=37f418d5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Artifacts MMO SDK</a></h1>
+
+
+
+<p class="blurb">SDK Python pour Artifacts MMO — simple, typé, prêt à jouer.</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Player Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../character.html">Your Character</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../skills.html">Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bank.html">Bank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../marketplace.html">Grand Exchange (Marketplace)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quests.html">Quests (Tasks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../trading.html">Trading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../errors.html">Error Handling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Full Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/first-bot.html">Your First Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/combat-loop.html">Combat Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/resource-farming.html">Resource Farming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/multi-characters.html">Multi-Character Bots</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/client.html">Client Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/character.html">Character Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/domains.html">Domain Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/errors.html">Error Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for artifacts.domains.bank</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Bank domain -- gold and item deposits/withdrawals.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..cooldown</span><span class="w"> </span><span class="kn">import</span> <span class="n">_auto_cooldown</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..models.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleItemSchema</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..models.responses</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BankExtensionTransactionSchema</span><span class="p">,</span>
+    <span class="n">BankGoldTransactionSchema</span><span class="p">,</span>
+    <span class="n">BankItemTransactionSchema</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">._base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CharacterDomain</span>
+
+
+<div class="viewcode-block" id="BankDomain">
+<a class="viewcode-back" href="../../../reference/domains.html#artifacts.domains.BankDomain">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BankDomain</span><span class="p">(</span><span class="n">CharacterDomain</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manage bank operations.</span>
+
+<span class="sd">    Accessed via ``character.bank``::</span>
+
+<span class="sd">        await char.bank.deposit_gold(quantity=500)</span>
+<span class="sd">        await char.bank.withdraw_items(items=[SimpleItemSchema(code=&quot;iron_ore&quot;, quantity=10)])</span>
+<span class="sd">        await char.bank.buy_expansion()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="BankDomain.deposit_gold">
+<a class="viewcode-back" href="../../../reference/domains.html#artifacts.domains.BankDomain.deposit_gold">[docs]</a>
+    <span class="nd">@_auto_cooldown</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">deposit_gold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BankGoldTransactionSchema</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deposit gold into the bank.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">post_model</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/bank/deposit/gold&quot;</span><span class="p">,</span>
+            <span class="n">BankGoldTransactionSchema</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="n">quantity</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BankDomain.withdraw_gold">
+<a class="viewcode-back" href="../../../reference/domains.html#artifacts.domains.BankDomain.withdraw_gold">[docs]</a>
+    <span class="nd">@_auto_cooldown</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">withdraw_gold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BankGoldTransactionSchema</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Withdraw gold from the bank.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">post_model</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/bank/withdraw/gold&quot;</span><span class="p">,</span>
+            <span class="n">BankGoldTransactionSchema</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="n">quantity</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BankDomain.deposit_items">
+<a class="viewcode-back" href="../../../reference/domains.html#artifacts.domains.BankDomain.deposit_items">[docs]</a>
+    <span class="nd">@_auto_cooldown</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">deposit_items</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SimpleItemSchema</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BankItemTransactionSchema</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deposit items into the bank.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">post_model</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/bank/deposit/item&quot;</span><span class="p">,</span>
+            <span class="n">BankItemTransactionSchema</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">],</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BankDomain.withdraw_items">
+<a class="viewcode-back" href="../../../reference/domains.html#artifacts.domains.BankDomain.withdraw_items">[docs]</a>
+    <span class="nd">@_auto_cooldown</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">withdraw_items</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SimpleItemSchema</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BankItemTransactionSchema</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Withdraw items from the bank.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">post_model</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/bank/withdraw/item&quot;</span><span class="p">,</span>
+            <span class="n">BankItemTransactionSchema</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">],</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BankDomain.buy_expansion">
+<a class="viewcode-back" href="../../../reference/domains.html#artifacts.domains.BankDomain.buy_expansion">[docs]</a>
+    <span class="nd">@_auto_cooldown</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">buy_expansion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BankExtensionTransactionSchema</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Purchase a 20-slot bank expansion.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">post_model</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/bank/buy_expansion&quot;</span><span class="p">,</span>
+            <span class="n">BankExtensionTransactionSchema</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2026, Artifacts MMO SDK Contributors.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
