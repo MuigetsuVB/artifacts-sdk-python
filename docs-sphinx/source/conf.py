@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath("../../src"))
 project = "Artifacts MMO SDK"
 copyright = "2026, Artifacts MMO SDK Contributors"
 author = "Artifacts MMO SDK Contributors"
-release = "0.2.1"
+release = "0.2.3"
 version = "0.2"
 
 # -- General configuration ----------------------------------------------------
