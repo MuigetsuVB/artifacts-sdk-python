@@ -208,6 +208,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../game-data.html">Game Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gems-shop.html">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -456,6 +457,16 @@ created without an explicit per-character override:</p>
 <dd></dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.game_assistant">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">game_assistant</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.game_assistant" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.gems_shop">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gems_shop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.gems_shop" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.grand_exchange">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">grand_exchange</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.grand_exchange" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -486,8 +497,18 @@ created without an explicit per-character override:</p>
 <dd></dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.raids">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.raids" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.resources">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.resources" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.season_rewards">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">season_rewards</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.season_rewards" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -503,6 +524,11 @@ created without an explicit per-character override:</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.sandbox">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sandbox</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.sandbox" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="artifacts.sync_client.ArtifactsClient.skins">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">skins</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_SyncProxy</span></em><a class="headerlink" href="#artifacts.sync_client.ArtifactsClient.skins" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -630,16 +656,21 @@ without adding duplicate handlers.</p>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.badges"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.badges</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.effects"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.effects</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.events"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.events</span></code></a></li>
+<li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.game_assistant"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.game_assistant</span></code></a></li>
+<li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.gems_shop"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.gems_shop</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.grand_exchange"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.grand_exchange</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.items"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.items</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.leaderboard"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.leaderboard</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.maps"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.maps</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.monsters"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.monsters</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.npcs"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.npcs</span></code></a></li>
+<li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.raids"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.raids</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.resources"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.resources</span></code></a></li>
+<li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.season_rewards"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.season_rewards</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.tasks"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.tasks</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.simulation"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.simulation</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.sandbox"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.sandbox</span></code></a></li>
+<li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.skins"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.skins</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.sync_client.ArtifactsClient.close"><code class="docutils literal notranslate"><span class="pre">ArtifactsClient.close()</span></code></a></li>
 </ul>
 </li>

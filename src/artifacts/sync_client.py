@@ -207,6 +207,14 @@ class ArtifactsClient:
         return _SyncProxy(self._async_client.events)
 
     @property
+    def game_assistant(self) -> _SyncProxy:
+        return _SyncProxy(self._async_client.game_assistant)
+
+    @property
+    def gems_shop(self) -> _SyncProxy:
+        return _SyncProxy(self._async_client.gems_shop)
+
+    @property
     def grand_exchange(self) -> _SyncProxy:
         return _SyncProxy(self._async_client.grand_exchange)
 
@@ -231,8 +239,16 @@ class ArtifactsClient:
         return _SyncProxy(self._async_client.npcs)
 
     @property
+    def raids(self) -> _SyncProxy:
+        return _SyncProxy(self._async_client.raids)
+
+    @property
     def resources(self) -> _SyncProxy:
         return _SyncProxy(self._async_client.resources)
+
+    @property
+    def season_rewards(self) -> _SyncProxy:
+        return _SyncProxy(self._async_client.season_rewards)
 
     @property
     def tasks(self) -> _SyncProxy:
@@ -245,6 +261,10 @@ class ArtifactsClient:
     @property
     def sandbox(self) -> _SyncProxy:
         return _SyncProxy(self._async_client.sandbox)
+
+    @property
+    def skins(self) -> _SyncProxy:
+        return _SyncProxy(self._async_client.skins)
 
     # -- Lifecycle --
 

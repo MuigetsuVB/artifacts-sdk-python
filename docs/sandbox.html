@@ -208,6 +208,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="game-data.html">Game Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gems-shop.html">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -330,7 +331,19 @@ with <code class="docutils literal notranslate"><span class="pre">base_url=&quot
 <section id="spawn-events">
 <h2>Spawn Events<a class="headerlink" href="#spawn-events" title="Link to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">event</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sandbox</span><span class="o">.</span><span class="n">spawn_event</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;special_boss&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Event spawned at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Event spawned at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="clear-cooldown">
+<h2>Clear Cooldown<a class="headerlink" href="#clear-cooldown" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">sandbox</span><span class="o">.</span><span class="n">clear_cooldown</span><span class="p">(</span><span class="n">character</span><span class="o">=</span><span class="s2">&quot;MyChar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="teleport">
+<h2>Teleport<a class="headerlink" href="#teleport" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">sandbox</span><span class="o">.</span><span class="n">teleport</span><span class="p">(</span><span class="n">character</span><span class="o">=</span><span class="s2">&quot;MyChar&quot;</span><span class="p">,</span> <span class="n">map_id</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -441,6 +454,8 @@ server. Use with caution!</p>
 <li><a class="reference internal" href="#give-items">Give Items</a></li>
 <li><a class="reference internal" href="#give-xp">Give XP</a></li>
 <li><a class="reference internal" href="#spawn-events">Spawn Events</a></li>
+<li><a class="reference internal" href="#clear-cooldown">Clear Cooldown</a></li>
+<li><a class="reference internal" href="#teleport">Teleport</a></li>
 <li><a class="reference internal" href="#reset-account">Reset Account</a></li>
 <li><a class="reference internal" href="#typical-testing-workflow">Typical Testing Workflow</a></li>
 </ul>

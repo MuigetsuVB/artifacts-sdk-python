@@ -208,6 +208,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../game-data.html">Game Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gems-shop.html">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -394,7 +395,21 @@
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>EquipRequestSchema</em></p>
+<dd class="field-even"><p><em>EquipmentTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.EquipmentDomain.equip_items">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">equip_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/equipment.html#EquipmentDomain.equip_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.EquipmentDomain.equip_items" title="Link to this definition">¶</a></dt>
+<dd><p>Equip one or more items into slots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>EquipmentTransactionSchema</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -411,7 +426,21 @@
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>EquipRequestSchema</em></p>
+<dd class="field-even"><p><em>EquipmentTransactionSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="artifacts.domains.EquipmentDomain.unequip_items">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unequip_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artifacts/domains/equipment.html#EquipmentDomain.unequip_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artifacts.domains.EquipmentDomain.unequip_items" title="Link to this definition">¶</a></dt>
+<dd><p>Unequip one or more items from slots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>EquipmentTransactionSchema</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -908,7 +937,9 @@
 <li><a class="reference internal" href="#equipment">Equipment</a><ul>
 <li><a class="reference internal" href="#artifacts.domains.EquipmentDomain"><code class="docutils literal notranslate"><span class="pre">EquipmentDomain</span></code></a><ul>
 <li><a class="reference internal" href="#artifacts.domains.EquipmentDomain.equip"><code class="docutils literal notranslate"><span class="pre">EquipmentDomain.equip()</span></code></a></li>
+<li><a class="reference internal" href="#artifacts.domains.EquipmentDomain.equip_items"><code class="docutils literal notranslate"><span class="pre">EquipmentDomain.equip_items()</span></code></a></li>
 <li><a class="reference internal" href="#artifacts.domains.EquipmentDomain.unequip"><code class="docutils literal notranslate"><span class="pre">EquipmentDomain.unequip()</span></code></a></li>
+<li><a class="reference internal" href="#artifacts.domains.EquipmentDomain.unequip_items"><code class="docutils literal notranslate"><span class="pre">EquipmentDomain.unequip_items()</span></code></a></li>
 </ul>
 </li>
 </ul>

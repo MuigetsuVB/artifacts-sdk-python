@@ -208,6 +208,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="game-data.html">Game Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gems-shop.html">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -285,6 +286,17 @@ make them stronger in combat.</p>
 </pre></div>
 </div>
 </section>
+<section id="equip-multiple-items">
+<h2>Equip Multiple Items<a class="headerlink" href="#equip-multiple-items" title="Link to this heading">¶</a></h2>
+<p>The API accepts equipment actions in batches. The single-item helpers above
+remain available and send a one-item batch automatically.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">equip_items</span><span class="p">([</span>
+    <span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;iron_sword&quot;</span><span class="p">,</span> <span class="s2">&quot;slot&quot;</span><span class="p">:</span> <span class="n">ItemSlot</span><span class="o">.</span><span class="n">WEAPON</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;iron_helmet&quot;</span><span class="p">,</span> <span class="s2">&quot;slot&quot;</span><span class="p">:</span> <span class="n">ItemSlot</span><span class="o">.</span><span class="n">HELMET</span><span class="p">},</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</section>
 <section id="unequip-an-item">
 <h2>Unequip an Item<a class="headerlink" href="#unequip-an-item" title="Link to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove weapon</span>
@@ -292,6 +304,15 @@ make them stronger in combat.</p>
 
 <span class="c1"># Remove a ring</span>
 <span class="n">char</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">unequip</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="n">ItemSlot</span><span class="o">.</span><span class="n">RING1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="unequip-multiple-items">
+<h2>Unequip Multiple Items<a class="headerlink" href="#unequip-multiple-items" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">unequip_items</span><span class="p">([</span>
+    <span class="p">{</span><span class="s2">&quot;slot&quot;</span><span class="p">:</span> <span class="n">ItemSlot</span><span class="o">.</span><span class="n">WEAPON</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;slot&quot;</span><span class="p">:</span> <span class="n">ItemSlot</span><span class="o">.</span><span class="n">HELMET</span><span class="p">},</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </section>
@@ -442,7 +463,9 @@ make them stronger in combat.</p>
             <ul>
 <li><a class="reference internal" href="#">Equipment</a><ul>
 <li><a class="reference internal" href="#equip-an-item">Equip an Item</a></li>
+<li><a class="reference internal" href="#equip-multiple-items">Equip Multiple Items</a></li>
 <li><a class="reference internal" href="#unequip-an-item">Unequip an Item</a></li>
+<li><a class="reference internal" href="#unequip-multiple-items">Unequip Multiple Items</a></li>
 <li><a class="reference internal" href="#slots">Slots</a></li>
 <li><a class="reference internal" href="#view-current-equipment">View Current Equipment</a></li>
 <li><a class="reference internal" href="#browse-equipment-in-the-game">Browse Equipment in the Game</a></li>

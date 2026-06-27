@@ -161,6 +161,47 @@ Effects
    effect = client.effects.get("fire_attack_boost")
    print(f"{effect.name}: {effect.description}")
 
+Skins
+-----
+
+.. code-block:: python
+
+   skins = client.skins.get_all()
+   for skin in skins["data"]:
+       print(f"{skin['code']} - {skin['name']}")
+
+   skin = client.skins.get("skin_code")
+   print(skin["data"]["name"])
+
+Raids
+-----
+
+.. code-block:: python
+
+   raids = client.raids.get_all(active=True)
+   for raid in raids["data"]:
+       print(f"{raid['code']} - {raid['name']}")
+
+   raid = client.raids.get("raid_code")
+   leaderboard = client.raids.get_leaderboard("raid_code")
+
+Season Rewards
+--------------
+
+.. code-block:: python
+
+   rewards = client.season_rewards.get_all()
+   for reward in rewards["data"]:
+       print(reward["code"])
+
+Game Assistant
+--------------
+
+.. code-block:: python
+
+   answer = client.game_assistant.ask("Where can I find copper ore?")
+   print(answer["data"]["answer"])
+
 NPCs
 ----
 

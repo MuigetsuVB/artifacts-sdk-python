@@ -20,6 +20,19 @@ Equip an Item
    # Equip a ring
    char.equipment.equip(code="copper_ring", slot=ItemSlot.RING1)
 
+Equip Multiple Items
+--------------------
+
+The API accepts equipment actions in batches. The single-item helpers above
+remain available and send a one-item batch automatically.
+
+.. code-block:: python
+
+   char.equipment.equip_items([
+       {"code": "iron_sword", "slot": ItemSlot.WEAPON},
+       {"code": "iron_helmet", "slot": ItemSlot.HELMET},
+   ])
+
 Unequip an Item
 ----------------
 
@@ -30,6 +43,16 @@ Unequip an Item
 
    # Remove a ring
    char.equipment.unequip(slot=ItemSlot.RING1)
+
+Unequip Multiple Items
+----------------------
+
+.. code-block:: python
+
+   char.equipment.unequip_items([
+       {"slot": ItemSlot.WEAPON},
+       {"slot": ItemSlot.HELMET},
+   ])
 
 Slots
 ------

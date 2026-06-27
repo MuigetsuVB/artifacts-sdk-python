@@ -9,12 +9,12 @@ from .character import CharacterSchema
 from .combat import CharacterFightSchema
 from .common import (
     CooldownSchema,
-    DestinationSchema,
     DropSchema,
     SimpleItemSchema,
 )
 from .enums import CharacterSkin, ItemSlot
 from .grand_exchange import GEOrderCreatedSchema, GETransactionSchema
+from .items import ItemSchema
 from .maps import MapSchema, TransitionSchema
 from .npcs import NpcItemTransactionSchema
 from .tasks import TaskSchema, TaskTradeSchema
@@ -52,11 +52,19 @@ class CharacterRestDataSchema(BaseModel):
 
 # -- Equipment --
 
-class EquipRequestSchema(BaseModel):
-    cooldown: CooldownSchema
+class EquipmentItemSchema(BaseModel):
     slot: ItemSlot
-    item: SimpleItemSchema
+    item: ItemSchema
+
+
+class EquipmentTransactionSchema(BaseModel):
+    cooldown: CooldownSchema
+    items: list[EquipmentItemSchema]
     character: CharacterSchema
+
+
+# Backward-compatible export name used by older SDK code.
+EquipRequestSchema = EquipmentTransactionSchema
 
 
 # -- Skills --

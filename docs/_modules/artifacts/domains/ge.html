@@ -207,6 +207,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../game-data.html">Game Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gems-shop.html">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -301,7 +302,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GEOrderTransactionSchema</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a sell order on the Grand Exchange.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">post_model</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/grandexchange/create-sell-order&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/grandexchange/create_sell_order&quot;</span><span class="p">,</span>
             <span class="n">GEOrderTransactionSchema</span><span class="p">,</span>
             <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span> <span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="n">quantity</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">price</span><span class="p">},</span>
         <span class="p">)</span></div>
@@ -315,7 +316,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GEOrderTransactionSchema</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a buy order on the Grand Exchange.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_http</span><span class="o">.</span><span class="n">post_model</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/grandexchange/create-buy-order&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="si">}</span><span class="s2">/grandexchange/create_buy_order&quot;</span><span class="p">,</span>
             <span class="n">GEOrderTransactionSchema</span><span class="p">,</span>
             <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span> <span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="n">quantity</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">price</span><span class="p">},</span>
         <span class="p">)</span></div>

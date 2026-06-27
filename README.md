@@ -94,7 +94,7 @@ ArtifactsClient / AsyncArtifactsClient
 │   ├── .get(), .get_logs()                          (info)
 │   ├── .inventory         -> use(), delete()
 │   ├── .bank              -> deposit_gold(), withdraw_gold(), deposit_items(), withdraw_items(), buy_expansion()
-│   ├── .equipment         -> equip(), unequip()
+│   ├── .equipment         -> equip(), equip_items(), unequip(), unequip_items()
 │   ├── .skills            -> gather(), craft(), recycle()
 │   ├── .tasks             -> new(), complete(), exchange(), trade(), cancel()
 │   ├── .ge                -> buy(), sell(), create_buy_order(), fill(), cancel()
@@ -111,6 +111,11 @@ ArtifactsClient / AsyncArtifactsClient
 ├── .resources             -> ResourcesAPI
 ├── .npcs                  -> NPCsAPI
 ├── .events                -> EventsAPI
+├── .skins                 -> SkinsAPI
+├── .raids                 -> RaidsAPI
+├── .season_rewards        -> SeasonRewardsAPI
+├── .game_assistant        -> GameAssistantAPI
+├── .gems_shop             -> GemsShopAPI
 ├── .achievements          -> AchievementsAPI
 ├── .badges                -> BadgesAPI
 ├── .effects               -> EffectsAPI
@@ -169,6 +174,11 @@ from artifacts.models.enums import ItemSlot
 
 char.equipment.equip(code="iron_sword", slot=ItemSlot.WEAPON)
 char.equipment.unequip(slot=ItemSlot.WEAPON)
+
+char.equipment.equip_items([
+    {"code": "iron_helmet", "slot": ItemSlot.HELMET},
+    {"code": "copper_ring", "slot": ItemSlot.RING1},
+])
 ```
 
 ### Skills (Gathering, Crafting, Recycling)
@@ -662,6 +672,21 @@ client.sandbox.reset_account()
 
 ---
 
+## Gems Shop
+
+```python
+catalog = client.gems_shop.get_catalog()
+client.gems_shop.buy_skin("skin_code")
+client.gems_shop.spawn_event("event_code")
+client.gems_shop.buy_subscription()
+client.gems_shop.buy_custom_design("design_code")
+```
+
+On sandbox environments, use `client.sandbox.spawn_event("event_code")`
+instead of the gems shop.
+
+---
+
 ## Complete API Reference
 
 ### Client Sub-Accessors
@@ -671,14 +696,19 @@ client.sandbox.reset_account()
 | `client.server` | `get_status()` |
 | `client.token` | `generate(username, password)` |
 | `client.accounts` | `create()`, `forgot_password()`, `reset_password()`, `get()`, `get_achievements()`, `get_characters()` |
-| `client.my_account` | `get_details()`, `get_bank()`, `get_bank_items()`, `get_ge_orders()`, `get_ge_history()`, `get_pending_items()`, `change_password()`, `get_characters()`, `get_all_logs()` |
-| `client.characters` | `create()`, `delete()`, `get_active()`, `get()` |
+| `client.my_account` | `get_details()`, `get_bank()`, `get_bank_items()`, `get_ge_orders()`, `get_ge_history()`, `get_pending_items()`, `change_password()`, `change_email()`, `get_gems_history()`, `get_purchase_history()`, `get_rates()`, `get_subscription()`, `buy_gems()`, `subscribe_stripe()`, `subscribe_member_token()`, `cancel_subscription()`, `get_characters()`, `get_all_logs()` |
+| `client.characters` | `create()`, `delete()`, `get_active()`, `get()`, `get_stats()` |
 | `client.items` | `get_all()`, `get()` |
 | `client.monsters` | `get_all()`, `get()` |
 | `client.maps` | `get_all()`, `get_layer()`, `get_by_position()`, `get_by_id()` |
 | `client.resources` | `get_all()`, `get()` |
 | `client.npcs` | `get_all()`, `get()`, `get_all_items()`, `get_items()` |
-| `client.events` | `get_all_active()`, `get_all()`, `spawn()` |
+| `client.events` | `get_all_active()`, `get_all()` |
+| `client.skins` | `get_all()`, `get()` |
+| `client.raids` | `get_all()`, `get()`, `get_leaderboard()` |
+| `client.season_rewards` | `get_all()`, `get()` |
+| `client.game_assistant` | `ask()` |
+| `client.gems_shop` | `get_catalog()`, `buy_skin()`, `spawn_event()`, `buy_subscription()`, `buy_custom_design()` |
 | `client.achievements` | `get_all()`, `get()` |
 | `client.badges` | `get_all()`, `get()` |
 | `client.effects` | `get_all()`, `get()` |
@@ -686,7 +716,7 @@ client.sandbox.reset_account()
 | `client.leaderboard` | `get_characters()`, `get_accounts()` |
 | `client.tasks` | `get_all()`, `get()`, `get_all_rewards()`, `get_reward()` |
 | `client.simulation` | `fight()` |
-| `client.sandbox` | `give_gold()`, `give_item()`, `give_xp()`, `spawn_event()`, `reset_account()` |
+| `client.sandbox` | `give_gold()`, `give_item()`, `give_xp()`, `spawn_event()`, `clear_cooldown()`, `teleport()`, `reset_account()` |
 
 ### Character Methods (direct)
 
@@ -703,7 +733,7 @@ client.sandbox.reset_account()
 |---|---|
 | `char.inventory` | `use(code, qty)`, `delete(code, qty)` |
 | `char.bank` | `deposit_gold(qty)`, `withdraw_gold(qty)`, `deposit_items(items)`, `withdraw_items(items)`, `buy_expansion()` |
-| `char.equipment` | `equip(code, slot)`, `unequip(slot)` |
+| `char.equipment` | `equip(code, slot)`, `equip_items(items)`, `unequip(slot)`, `unequip_items(items)` |
 | `char.skills` | `gather()`, `craft(code, qty)`, `recycle(code, qty)` |
 | `char.tasks` | `new()`, `complete()`, `exchange()`, `trade(code, qty)`, `cancel()` |
 | `char.ge` | `buy(id, qty)`, `sell(code, qty, price)`, `create_buy_order(code, qty, price)`, `fill(id, qty)`, `cancel(id)` |

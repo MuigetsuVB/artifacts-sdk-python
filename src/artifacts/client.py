@@ -12,6 +12,8 @@ from .api.badges import BadgesAPI
 from .api.characters import CharactersAPI
 from .api.effects import EffectsAPI
 from .api.events import EventsAPI
+from .api.game_assistant import GameAssistantAPI
+from .api.gems_shop import GemsShopAPI
 from .api.grand_exchange import GrandExchangeAPI
 from .api.items import ItemsAPI
 from .api.leaderboard import LeaderboardAPI
@@ -19,10 +21,13 @@ from .api.maps import MapsAPI
 from .api.monsters import MonstersAPI
 from .api.my_account import MyAccountAPI
 from .api.npcs import NPCsAPI
+from .api.raids import RaidsAPI
 from .api.resources import ResourcesAPI
 from .api.sandbox import SandboxAPI
+from .api.season_rewards import SeasonRewardsAPI
 from .api.server import ServerAPI
 from .api.simulation import SimulationAPI
+from .api.skins import SkinsAPI
 from .api.tasks import TasksAPI
 from .api.token import TokenAPI
 
@@ -77,16 +82,21 @@ class AsyncArtifactsClient:
         self.badges = BadgesAPI(self._http)
         self.effects = EffectsAPI(self._http)
         self.events = EventsAPI(self._http)
+        self.game_assistant = GameAssistantAPI(self._http)
+        self.gems_shop = GemsShopAPI(self._http)
         self.grand_exchange = GrandExchangeAPI(self._http)
         self.items = ItemsAPI(self._http)
         self.leaderboard = LeaderboardAPI(self._http)
         self.maps = MapsAPI(self._http)
         self.monsters = MonstersAPI(self._http)
         self.npcs = NPCsAPI(self._http)
+        self.raids = RaidsAPI(self._http)
         self.resources = ResourcesAPI(self._http)
+        self.season_rewards = SeasonRewardsAPI(self._http)
         self.tasks = TasksAPI(self._http)
         self.simulation = SimulationAPI(self._http)
         self.sandbox = SandboxAPI(self._http)
+        self.skins = SkinsAPI(self._http)
 
     # -- Global auto_wait toggle --
 

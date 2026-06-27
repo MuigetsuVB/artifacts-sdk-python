@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from ..models.events import ActiveEventSchema, EventSchema
 from ..models.pagination import DataPage
@@ -31,8 +31,3 @@ class EventsAPI:
         params = {"page": page, "size": size}
         return await self._http.get_page("/events", EventSchema, params=params)
 
-    async def spawn(self, code: str) -> ActiveEventSchema:
-        """POST /events/spawn -- spawn an event (member/founder required)."""
-        return await self._http.post_model(
-            "/events/spawn", ActiveEventSchema, json={"code": code}
-        )

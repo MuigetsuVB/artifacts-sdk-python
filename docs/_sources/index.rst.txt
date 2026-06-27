@@ -52,6 +52,7 @@ Contents
 
    game-data
    events
+   gems-shop
    account
 
 .. toctree::

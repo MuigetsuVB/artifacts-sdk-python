@@ -25,21 +25,24 @@ Browse All Events
    for event in events.data:
        print(f"{event.code} — {event.name}")
 
-Spawn an Event (Members Only)
--------------------------------
+Spawn an Event
+--------------
 
-Members (founders) can **spawn events** manually:
+Event spawning is now handled by the gems shop on the main server, or by
+the sandbox API on sandbox environments.
 
 .. code-block:: python
 
-   # Spawn an event by code
-   event = client.events.spawn("special_boss")
-   print(f"Spawned {event.code} at ({event.x},{event.y})!")
+   # Main server
+   event = client.gems_shop.spawn_event("special_boss")
+   print(f"Spawned {event.code} at ({event.map.x},{event.map.y})!")
 
-.. warning::
+   # Sandbox environments
+   event = client.sandbox.spawn_event("special_boss")
 
-   ``events.spawn()`` requires a **member/founder** account. Free
-   accounts can only view active events.
+.. note::
+
+   The old ``client.events.spawn()`` endpoint was removed from the API.
 
 Fighting Event Monsters
 ------------------------
@@ -52,9 +55,9 @@ Once an event is active, move your character to its tile and fight:
    active = client.events.get_all_active()
    if active.data:
        event = active.data[0]
-       print(f"Event: {event.code} at ({event.x},{event.y})")
+       print(f"Event: {event.code} at ({event.map.x},{event.map.y})")
 
        # Move there and fight
-       char.move(x=event.x, y=event.y)
+       char.move(x=event.map.x, y=event.map.y)
        result = char.fight()
        print(f"Result: {result.fight.result.value}")

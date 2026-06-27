@@ -32,7 +32,7 @@ class GrandExchangeDomain(CharacterDomain):
     ) -> GEOrderTransactionSchema:
         """Create a sell order on the Grand Exchange."""
         return await self._http.post_model(
-            f"{self._base}/grandexchange/create-sell-order",
+            f"{self._base}/grandexchange/create_sell_order",
             GEOrderTransactionSchema,
             json={"code": code, "quantity": quantity, "price": price},
         )
@@ -43,7 +43,7 @@ class GrandExchangeDomain(CharacterDomain):
     ) -> GEOrderTransactionSchema:
         """Create a buy order on the Grand Exchange."""
         return await self._http.post_model(
-            f"{self._base}/grandexchange/create-buy-order",
+            f"{self._base}/grandexchange/create_buy_order",
             GEOrderTransactionSchema,
             json={"code": code, "quantity": quantity, "price": price},
         )

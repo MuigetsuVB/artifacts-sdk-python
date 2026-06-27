@@ -20,14 +20,14 @@ class SimulationAPI:
         monster: str,
         iterations: int = 100,
     ) -> CombatSimulationDataSchema:
-        """POST /simulation/fight_simulation"""
+        """POST /simulation/fight"""
         body = {
             "characters": [c.model_dump(exclude_none=True) for c in characters],
             "monster": monster,
             "iterations": iterations,
         }
         return await self._http.post_model(
-            "/simulation/fight_simulation",
+            "/simulation/fight",
             CombatSimulationDataSchema,
             json=body,
         )

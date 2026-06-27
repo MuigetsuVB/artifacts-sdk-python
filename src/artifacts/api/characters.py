@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, Any
 
 from ..models.character import ActiveCharacterSchema, CharacterSchema
 from ..models.enums import CharacterSkin
@@ -44,3 +44,7 @@ class CharactersAPI:
     async def get(self, name: str) -> CharacterSchema:
         """GET /characters/{name}"""
         return await self._http.get_model(f"/characters/{name}", CharacterSchema)
+
+    async def get_stats(self, name: str) -> dict[str, Any]:
+        """GET /characters/{name}/stats"""
+        return await self._http.get(f"/characters/{name}/stats")

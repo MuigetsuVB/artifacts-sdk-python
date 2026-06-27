@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Account &amp; Characters" href="account.html"><link rel="prev" title="Game Data" href="game-data.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Gems Shop" href="gems-shop.html"><link rel="prev" title="Game Data" href="game-data.html">
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
         <title>Events - Artifacts MMO SDK</title>
@@ -208,6 +208,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="game-data.html">Game Data</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gems-shop.html">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -289,18 +290,21 @@ for a short period.</p>
 </pre></div>
 </div>
 </section>
-<section id="spawn-an-event-members-only">
-<h2>Spawn an Event (Members Only)<a class="headerlink" href="#spawn-an-event-members-only" title="Link to this heading">¶</a></h2>
-<p>Members (founders) can <strong>spawn events</strong> manually:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spawn an event by code</span>
-<span class="n">event</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;special_boss&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spawned </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
+<section id="spawn-an-event">
+<h2>Spawn an Event<a class="headerlink" href="#spawn-an-event" title="Link to this heading">¶</a></h2>
+<p>Event spawning is now handled by the gems shop on the main server, or by
+the sandbox API on sandbox environments.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Main server</span>
+<span class="n">event</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gems_shop</span><span class="o">.</span><span class="n">spawn_event</span><span class="p">(</span><span class="s2">&quot;special_boss&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spawned </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Sandbox environments</span>
+<span class="n">event</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sandbox</span><span class="o">.</span><span class="n">spawn_event</span><span class="p">(</span><span class="s2">&quot;special_boss&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">events.spawn()</span></code> requires a <strong>member/founder</strong> account. Free
-accounts can only view active events.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The old <code class="docutils literal notranslate"><span class="pre">client.events.spawn()</span></code> endpoint was removed from the API.</p>
 </div>
 </section>
 <section id="fighting-event-monsters">
@@ -310,10 +314,10 @@ accounts can only view active events.</p>
 <span class="n">active</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">get_all_active</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">active</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
     <span class="n">event</span> <span class="o">=</span> <span class="n">active</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Event: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Event: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
     <span class="c1"># Move there and fight</span>
-    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">char</span><span class="o">.</span><span class="n">fight</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fight</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -326,12 +330,12 @@ accounts can only view active events.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="account.html">
+          <a class="next-page" href="gems-shop.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Account &amp; Characters</div>
+                <div class="title">Gems Shop</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -379,7 +383,7 @@ accounts can only view active events.</p>
 <li><a class="reference internal" href="#">Events</a><ul>
 <li><a class="reference internal" href="#view-active-events">View Active Events</a></li>
 <li><a class="reference internal" href="#browse-all-events">Browse All Events</a></li>
-<li><a class="reference internal" href="#spawn-an-event-members-only">Spawn an Event (Members Only)</a></li>
+<li><a class="reference internal" href="#spawn-an-event">Spawn an Event</a></li>
 <li><a class="reference internal" href="#fighting-event-monsters">Fighting Event Monsters</a></li>
 </ul>
 </li>

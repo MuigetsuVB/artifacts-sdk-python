@@ -72,7 +72,21 @@ Spawn Events
 .. code-block:: python
 
    event = client.sandbox.spawn_event(code="special_boss")
-   print(f"Event spawned at ({event.x},{event.y})!")
+   print(f"Event spawned at ({event.map.x},{event.map.y})!")
+
+Clear Cooldown
+--------------
+
+.. code-block:: python
+
+   client.sandbox.clear_cooldown(character="MyChar")
+
+Teleport
+--------
+
+.. code-block:: python
+
+   client.sandbox.teleport(character="MyChar", map_id=42)
 
 Reset Account
 --------------

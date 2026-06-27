@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Error Handling" href="errors.html"><link rel="prev" title="Tasks" href="tasks.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Account &amp; Characters" href="account.html"><link rel="prev" title="Events" href="events.html">
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
-        <title>Trading - Artifacts MMO SDK</title>
+        <title>Gems Shop - Artifacts MMO SDK</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -191,7 +191,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Player Guide</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="character.html">Your Character</a></li>
@@ -201,14 +201,14 @@
 <li class="toctree-l1"><a class="reference internal" href="bank.html">Bank</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grand-exchange.html">Grand Exchange</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Trading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trading.html">Trading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Error Handling</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Game World</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="game-data.html">Game Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gems-shop.html">Gems Shop</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -249,7 +249,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/trading.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/gems-shop.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -267,76 +267,49 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="trading">
-<h1>Trading<a class="headerlink" href="#trading" title="Link to this heading">¶</a></h1>
-<p>You can buy and sell items from <strong>NPC merchants</strong>, or give gold
-and items to other players.</p>
-<section id="npc-trading">
-<h2>NPC Trading<a class="headerlink" href="#npc-trading" title="Link to this heading">¶</a></h2>
-<p>To trade with an NPC, you need to be on its tile.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find NPCs</span>
-<span class="n">npc_maps</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">maps</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;npc&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">npc_maps</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NPC at (</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">) — </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<section id="buy-from-an-npc">
-<h3>Buy from an NPC<a class="headerlink" href="#buy-from-an-npc" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Go to the NPC</span>
-<span class="n">char</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+          <section id="gems-shop">
+<h1>Gems Shop<a class="headerlink" href="#gems-shop" title="Link to this heading">¶</a></h1>
+<p>The gems shop exposes purchasable skins, event spawns, subscriptions, and
+custom designs.</p>
+<section id="browse-the-catalog">
+<h2>Browse the Catalog<a class="headerlink" href="#browse-the-catalog" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gems_shop</span><span class="o">.</span><span class="n">get_catalog</span><span class="p">()</span>
 
-<span class="c1"># Buy healing potions</span>
-<span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">npc_buy</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;healing_potion&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="sell-to-an-npc">
-<h3>Sell to an NPC<a class="headerlink" href="#sell-to-an-npc" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">npc_sell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="give-to-another-player">
-<h2>Give to Another Player<a class="headerlink" href="#give-to-another-player" title="Link to this heading">¶</a></h2>
-<p>You can give gold or items to another character <strong>on the same tile</strong>.</p>
-<section id="give-gold">
-<h3>Give Gold<a class="headerlink" href="#give-gold" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">give_gold</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="s2">&quot;OtherPlayer&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="give-items">
-<h3>Give Items<a class="headerlink" href="#give-items" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">artifacts.models.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleItemSchema</span>
+<span class="k">for</span> <span class="n">skin</span> <span class="ow">in</span> <span class="n">catalog</span><span class="o">.</span><span class="n">skins</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">skin</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">skin</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2"> gems&quot;</span><span class="p">)</span>
 
-<span class="n">char</span><span class="o">.</span><span class="n">trading</span><span class="o">.</span><span class="n">give_items</span><span class="p">(</span>
-    <span class="n">items</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">SimpleItemSchema</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;iron_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
-        <span class="n">SimpleItemSchema</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;copper_ore&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-    <span class="p">],</span>
-    <span class="n">character</span><span class="o">=</span><span class="s2">&quot;OtherPlayer&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Both characters must be <strong>on the same tile</strong> for gold or
-item transfers.</p>
-</div>
-</section>
-</section>
-<section id="browse-available-npcs">
-<h2>Browse Available NPCs<a class="headerlink" href="#browse-available-npcs" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">npcs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">npcs</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">npc</span> <span class="ow">in</span> <span class="n">npcs</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">npc</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">npc</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">) — </span><span class="si">{</span><span class="n">npc</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">catalog</span><span class="o">.</span><span class="n">spawn_events</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2"> gems&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="next-step">
-<h2>Next Step<a class="headerlink" href="#next-step" title="Link to this heading">¶</a></h2>
-<p>Head to <a class="reference internal" href="errors.html"><span class="doc">Error Handling</span></a> to learn how to handle errors like a pro.</p>
+<section id="buy-a-skin">
+<h2>Buy a Skin<a class="headerlink" href="#buy-a-skin" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">purchase</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gems_shop</span><span class="o">.</span><span class="n">buy_skin</span><span class="p">(</span><span class="s2">&quot;skin_code&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Remaining gems: </span><span class="si">{</span><span class="n">purchase</span><span class="o">.</span><span class="n">gems</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="spawn-an-event">
+<h2>Spawn an Event<a class="headerlink" href="#spawn-an-event" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">event</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gems_shop</span><span class="o">.</span><span class="n">spawn_event</span><span class="p">(</span><span class="s2">&quot;event_code&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spawned </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="buy-a-subscription">
+<h2>Buy a Subscription<a class="headerlink" href="#buy-a-subscription" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">subscription</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gems_shop</span><span class="o">.</span><span class="n">buy_subscription</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subscription</span><span class="o">.</span><span class="n">member_expiration</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="buy-a-custom-design">
+<h2>Buy a Custom Design<a class="headerlink" href="#buy-a-custom-design" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">design</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gems_shop</span><span class="o">.</span><span class="n">buy_custom_design</span><span class="p">(</span><span class="s2">&quot;design_code&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">design</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">design</span><span class="o">.</span><span class="n">cost</span><span class="si">}</span><span class="s2"> gems&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -345,23 +318,23 @@ item transfers.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="errors.html">
+          <a class="next-page" href="account.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Error Handling</div>
+                <div class="title">Account &amp; Characters</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="tasks.html">
+          <a class="prev-page" href="events.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Tasks</div>
+                <div class="title">Events</div>
                 
               </div>
             </a>
@@ -395,19 +368,12 @@ item transfers.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Trading</a><ul>
-<li><a class="reference internal" href="#npc-trading">NPC Trading</a><ul>
-<li><a class="reference internal" href="#buy-from-an-npc">Buy from an NPC</a></li>
-<li><a class="reference internal" href="#sell-to-an-npc">Sell to an NPC</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#give-to-another-player">Give to Another Player</a><ul>
-<li><a class="reference internal" href="#give-gold">Give Gold</a></li>
-<li><a class="reference internal" href="#give-items">Give Items</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#browse-available-npcs">Browse Available NPCs</a></li>
-<li><a class="reference internal" href="#next-step">Next Step</a></li>
+<li><a class="reference internal" href="#">Gems Shop</a><ul>
+<li><a class="reference internal" href="#browse-the-catalog">Browse the Catalog</a></li>
+<li><a class="reference internal" href="#buy-a-skin">Buy a Skin</a></li>
+<li><a class="reference internal" href="#spawn-an-event">Spawn an Event</a></li>
+<li><a class="reference internal" href="#buy-a-subscription">Buy a Subscription</a></li>
+<li><a class="reference internal" href="#buy-a-custom-design">Buy a Custom Design</a></li>
 </ul>
 </li>
 </ul>

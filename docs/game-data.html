@@ -208,6 +208,7 @@
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Game Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gems-shop.html">Gems Shop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account &amp; Characters</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
@@ -419,6 +420,43 @@ character to be anywhere specific.</p>
 </pre></div>
 </div>
 </section>
+<section id="skins">
+<h2>Skins<a class="headerlink" href="#skins" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skins</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">skins</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">skin</span> <span class="ow">in</span> <span class="n">skins</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">skin</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">skin</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">skin</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">skins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;skin_code&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">skin</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="raids">
+<h2>Raids<a class="headerlink" href="#raids" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">raids</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">raids</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">raid</span> <span class="ow">in</span> <span class="n">raids</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raid</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">raid</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">raid</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">raids</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;raid_code&quot;</span><span class="p">)</span>
+<span class="n">leaderboard</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">raids</span><span class="o">.</span><span class="n">get_leaderboard</span><span class="p">(</span><span class="s2">&quot;raid_code&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="season-rewards">
+<h2>Season Rewards<a class="headerlink" href="#season-rewards" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rewards</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">season_rewards</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">reward</span> <span class="ow">in</span> <span class="n">rewards</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">reward</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="game-assistant">
+<h2>Game Assistant<a class="headerlink" href="#game-assistant" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">game_assistant</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Where can I find copper ore?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;answer&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
 <section id="npcs">
 <h2>NPCs<a class="headerlink" href="#npcs" title="Link to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Browse all NPCs</span>
@@ -581,6 +619,10 @@ see <a class="reference internal" href="tasks.html"><span class="doc">Tasks</spa
 <li><a class="reference internal" href="#achievements">Achievements</a></li>
 <li><a class="reference internal" href="#badges">Badges</a></li>
 <li><a class="reference internal" href="#effects">Effects</a></li>
+<li><a class="reference internal" href="#skins">Skins</a></li>
+<li><a class="reference internal" href="#raids">Raids</a></li>
+<li><a class="reference internal" href="#season-rewards">Season Rewards</a></li>
+<li><a class="reference internal" href="#game-assistant">Game Assistant</a></li>
 <li><a class="reference internal" href="#npcs">NPCs</a></li>
 <li><a class="reference internal" href="#tasks-static-data">Tasks (Static Data)</a></li>
 <li><a class="reference internal" href="#leaderboard">Leaderboard</a></li>

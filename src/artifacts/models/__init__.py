@@ -74,6 +74,16 @@ from .combat import (
 )
 from .effects import EffectSchema
 from .events import ActiveEventSchema, EventContentSchema, EventMapSchema, EventSchema
+from .gems_shop import (
+    BuySkinResponseDataSchema,
+    GemShopCatalogDataSchema,
+    GemShopCustomDesignCatalogItemSchema,
+    GemShopCustomDesignPurchaseResponseDataSchema,
+    GemShopSkinCatalogItemSchema,
+    GemShopSpawnEventCatalogItemSchema,
+    GemShopSubscriptionCatalogItemSchema,
+    GemShopSubscriptionResponseDataSchema,
+)
 from .grand_exchange import (
     GEOrderCreatedSchema,
     GEOrderSchema,
@@ -104,6 +114,8 @@ from .responses import (
     CharacterTransitionDataSchema,
     ClaimPendingItemDataSchema,
     DeleteItemSchema,
+    EquipmentItemSchema,
+    EquipmentTransactionSchema,
     EquipRequestSchema,
     GEOrderTransactionSchema,
     GETransactionListSchema,
@@ -198,6 +210,14 @@ __all__ = [
     "EventContentSchema",
     "EventMapSchema",
     "EventSchema",
+    "BuySkinResponseDataSchema",
+    "GemShopCatalogDataSchema",
+    "GemShopCustomDesignCatalogItemSchema",
+    "GemShopCustomDesignPurchaseResponseDataSchema",
+    "GemShopSkinCatalogItemSchema",
+    "GemShopSpawnEventCatalogItemSchema",
+    "GemShopSubscriptionCatalogItemSchema",
+    "GemShopSubscriptionResponseDataSchema",
     "GEOrderCreatedSchema",
     "GEOrderSchema",
     "GETransactionSchema",
@@ -230,6 +250,8 @@ __all__ = [
     "CharacterTransitionDataSchema",
     "ClaimPendingItemDataSchema",
     "DeleteItemSchema",
+    "EquipmentItemSchema",
+    "EquipmentTransactionSchema",
     "EquipRequestSchema",
     "GEOrderTransactionSchema",
     "GETransactionListSchema",

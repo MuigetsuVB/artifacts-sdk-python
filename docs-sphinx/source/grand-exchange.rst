@@ -14,7 +14,7 @@ Your character must be on a **Grand Exchange tile** to trade.
        print(f"GE at ({m.x}, {m.y})")
 
 Create a Sell Order
--------------
+-------------------
 
 .. code-block:: python
 

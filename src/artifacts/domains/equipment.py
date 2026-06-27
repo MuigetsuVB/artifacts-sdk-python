@@ -2,10 +2,26 @@
 
 from __future__ import annotations
 
+from enum import Enum
+from typing import Any
+
 from ..cooldown import _auto_cooldown
 from ..models.enums import ItemSlot
-from ..models.responses import EquipRequestSchema
+from ..models.responses import EquipmentTransactionSchema
 from ._base import CharacterDomain
+
+
+def _dump_item(item: Any) -> dict:
+    if hasattr(item, "model_dump"):
+        return item.model_dump(mode="json", exclude_none=True)
+    if hasattr(item, "dict"):
+        data = item.dict(exclude_none=True)
+    else:
+        data = dict(item)
+    return {
+        key: value.value if isinstance(value, Enum) else value
+        for key, value in data.items()
+    }
 
 
 class EquipmentDomain(CharacterDomain):
@@ -20,21 +36,41 @@ class EquipmentDomain(CharacterDomain):
     @_auto_cooldown
     async def equip(
         self, *, code: str, slot: ItemSlot, quantity: int = 1
-    ) -> EquipRequestSchema:
+    ) -> EquipmentTransactionSchema:
         """Equip an item into a slot."""
+        return await self._equip_items(
+            [{"code": code, "slot": slot.value, "quantity": quantity}]
+        )
+
+    @_auto_cooldown
+    async def equip_items(self, items: list[Any]) -> EquipmentTransactionSchema:
+        """Equip one or more items into slots."""
+        return await self._equip_items(items)
+
+    async def _equip_items(self, items: list[Any]) -> EquipmentTransactionSchema:
         return await self._http.post_model(
             f"{self._base}/equip",
-            EquipRequestSchema,
-            json={"code": code, "slot": slot.value, "quantity": quantity},
+            EquipmentTransactionSchema,
+            json=[_dump_item(item) for item in items],
         )
 
     @_auto_cooldown
     async def unequip(
         self, *, slot: ItemSlot, quantity: int = 1
-    ) -> EquipRequestSchema:
+    ) -> EquipmentTransactionSchema:
         """Unequip an item from a slot."""
+        return await self._unequip_items(
+            [{"slot": slot.value, "quantity": quantity}]
+        )
+
+    @_auto_cooldown
+    async def unequip_items(self, items: list[Any]) -> EquipmentTransactionSchema:
+        """Unequip one or more items from slots."""
+        return await self._unequip_items(items)
+
+    async def _unequip_items(self, items: list[Any]) -> EquipmentTransactionSchema:
         return await self._http.post_model(
             f"{self._base}/unequip",
-            EquipRequestSchema,
-            json={"slot": slot.value, "quantity": quantity},
+            EquipmentTransactionSchema,
+            json=[_dump_item(item) for item in items],
         )

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from ..models.enums import XPType
 from ..models.events import ActiveEventSchema
@@ -56,6 +56,20 @@ class SandboxAPI:
             "/sandbox/spawn_event",
             ActiveEventSchema,
             json={"code": code},
+        )
+
+    async def clear_cooldown(self, character: str) -> dict[str, Any]:
+        """POST /sandbox/clear_cooldown"""
+        return await self._http.post(
+            "/sandbox/clear_cooldown",
+            json={"character": character},
+        )
+
+    async def teleport(self, character: str, map_id: int) -> dict[str, Any]:
+        """POST /sandbox/teleport"""
+        return await self._http.post(
+            "/sandbox/teleport",
+            json={"character": character, "map_id": map_id},
         )
 
     async def reset_account(self) -> str:
