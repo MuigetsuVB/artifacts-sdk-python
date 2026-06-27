@@ -2,7 +2,7 @@
 
 Python SDK for the [Artifacts MMO](https://artifactsmmo.com/) API. Control up to 5 characters simultaneously with full type safety, automatic cooldowns, and retry.
 
-**Compatible with Artifacts MMO API v7**
+**Compatible with Artifacts MMO API v8**
 
 - **65 endpoints** covered (every single one)
 - **Sync & async** -- beginners use `ArtifactsClient`, advanced users use `AsyncArtifactsClient` with `asyncio`
